@@ -1,6 +1,7 @@
 <template>
   <div>
-      我是博客列表
+    我是博客列表
+    <Nav/>
   </div>
 </template>
 
