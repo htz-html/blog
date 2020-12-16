@@ -83,7 +83,7 @@ axios.interceptors.response.use(
   }
 );
 
-// 防抖节流
+// 防抖节流   this 出错
 // const VueDebounce = (func: Function, time: number) => {
 //   let timeout: number| null;
 //   // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -112,81 +112,26 @@ axios.interceptors.response.use(
 //   }
 // }
 
-// export default { 
-//   $post(url: string, data: object) {
-//     return new Promise((resolve, reject) => {
-//       axios
-//         .post(url, data)
-//         .then(
-//           res => {
-//             if (!res) {
-//               return;
-//             }
-//             if (res.data && res.data.errorcode === 1) {
-//               Notification(res.data.errormsg);
-//               reject(res.data);
-//             } else {
-//               resolve(res.data);
-//             }
-//           },
-//           res => {
-//             reject(res);
-//           }
-//         )
-//         .catch((err: string) => {
-//           reject(err);
-//         });
-//     });
-//   },
-
-//   $get(url: string, params: object) {
-//     return new Promise((resolve, reject) => {
-//       axios
-//         .get(url, { params })
-//         .then(
-//           res => {
-//             if (!res) {
-//               return;
-//             }
-//             if (res.data && res.data.errorcode === 1) {
-//               Notification(res.data.errormsg);
-//               reject(res.data);
-//             } else {
-//               resolve(res.data);
-//             }
-//           },
-//           res => {
-//             reject(res);
-//           }
-//         )
-//         .catch((err: string) => {
-//           reject(err);
-//         });
-//     });
-//   }
-// }
-
-
-export interface HbnRes {
+export interface BlogRes {
   data: any;
   extdata?: any;
   errorcode: number;
   errormsg: string;
 }
-export interface HbnResWithConfig extends HbnRes {
+export interface BlogResWithConfig extends BlogRes {
   _data: any;
   _method: "get" | "post";
 }
-export interface HbnPostData {
+export interface BlogPostData {
   args?: any;
   data?: any;
 }
-const resPromise = (data: HbnRes, config: any) =>
+const resPromise = (data: BlogRes, config: any) =>
   data.errorcode === 0
-    ? Promise.resolve<HbnResWithConfig>({ ...data, ...config })
-    : Promise.reject<HbnResWithConfig>({ ...data, ...config });
+    ? Promise.resolve<BlogResWithConfig>({ ...data, ...config })
+    : Promise.reject<BlogResWithConfig>({ ...data, ...config });
 
-export class HbnAxios {
+export class BlogAxios {
   private baseUrl!: string;
   constructor(_baseUrl?: string, _api?: string) {
     if (_baseUrl) {
@@ -196,7 +141,7 @@ export class HbnAxios {
     }
   }
   async post(url: string, args?: any, data?: any) {
-    const res = await $axios.post<HbnResWithConfig>(this.baseUrl + url, {
+    const res = await $axios.post<BlogResWithConfig>(this.baseUrl + url, {
       args,
       data
     });
@@ -204,7 +149,7 @@ export class HbnAxios {
     return resPromise(res.data, { _data, _methods: "post" });
   }
   async get(url: string, params?: any) {
-    const res = await $axios.get<HbnResWithConfig>(this.baseUrl + url, {
+    const res = await $axios.get<BlogResWithConfig>(this.baseUrl + url, {
       params
     });
     const _data =
@@ -213,5 +158,5 @@ export class HbnAxios {
   }
 }
 
-export const axiosEnums = new HbnAxios();
+export const axiosEnums = new BlogAxios();
 

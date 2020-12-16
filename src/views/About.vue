@@ -4,7 +4,6 @@ import { function } from '../api/api';
     <el-button type="primary" @click="fun">主要按钮</el-button>
   </Layout>
 </template>
-
 <script>
 import { fjuserApi } from '../api/api'
 export default {
@@ -19,7 +18,5 @@ export default {
 
 }
 </script>
-
 <style lang="scss" scoped>
-
 </style>

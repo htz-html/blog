@@ -1,2 +1,2 @@
-import { HbnAxios } from "./axios";
-export const fjuserApi = new HbnAxios("api", "fjuser");
+import { BlogAxios } from "./axios";
+export const fjuserApi = new BlogAxios("api", "fjuser");
