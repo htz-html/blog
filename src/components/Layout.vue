@@ -1,7 +1,6 @@
 <template>
-  <div>
-    我是博客列表
-    <Nav/>
+  <div class="content">
+      <slot></slot>
   </div>
 </template>
 
@@ -10,7 +9,6 @@ export default {
     
 }
 </script>
-
 <style lang="scss" scoped>
 
 </style>
