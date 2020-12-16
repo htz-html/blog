@@ -3,25 +3,30 @@
     <h1 class="logo">
       <img src="../assets/image/logo@2x.png">
     </h1>
-    <router-link to="/">
+    <router-link to="/" class="item" active-class="selected" exact>
       <i class="iconfont iconhome"></i>
     </router-link>
-    <router-link to="/resume">
+    <router-link to="/resume" class="item" active-class="selected" >
       <i class="iconfont iconresume"></i>
     </router-link>
-    <router-link to="/article">
+    <router-link to="/article" class="item" active-class="selected" >
       <i class="iconfont iconarticleList"></i>
     </router-link> 
-    <router-link to="/about">
+    <router-link to="/about" class="item" active-class="selected" >
       <i class="iconfont iconinfo"></i>
     </router-link>
   </div>
 </template>
 <script lang="ts">
-export default {  
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component({})
+export default class Nav extends Vue {  
+  
 }
 </script>
 <style lang="scss" scoped>
+$thirty:30px;
 #Nav{
   width: 100px;
   background: #1F2026;
@@ -30,19 +35,22 @@ export default {
   bottom: 0;
   left: 0;
   text-align: center;
-  a{
+  > .item{
     display: block;
-    margin: 30px 0;
+    margin: $thirty 0;
     i{
       font-size: 44px;
     }
   }
-  .logo{
+  > .item.selected{
+    color: #FBDD40;
+  }
+  > .logo{
     margin-top: 30px;
     margin-bottom: 140px;
     img{
-      width: 69px;
-      height: 69px; 
+      width: 70px;
+      height: 70px; 
     }
   }
 }

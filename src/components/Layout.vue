@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <slot></slot>
+      <slot/>
     </div>
     <Nav/>
   </div>
@@ -9,7 +9,7 @@
 
 <script lang="ts">
 export default {
-    
+  name: "Layout"
 }
 </script>
 <style lang="scss" scoped>
