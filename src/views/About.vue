@@ -1,10 +1,21 @@
+import { function } from '../api/api';
 <template>
-  <Layout>关于我的博客</Layout>
+  <Layout>
+    <el-button type="primary" @click="fun">主要按钮</el-button>
+  </Layout>
 </template>
 
 <script>
 export default {
-  name: "About"
+  name: "About",
+  methods:{
+    fun () {
+      this.$get('https://api.haobangni.com/sites/sys/banner/position',{}).then((res)=>{
+        console.log(res)
+      })
+    }
+  }
+
 }
 </script>
 

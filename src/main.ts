@@ -6,10 +6,13 @@ import store from './store'
 import Nav from '@/components/Nav.vue';
 import Layout from '@/components/Layout.vue';
 import './css/common.scss'
+import { vueInit } from './vueInit/index';
+import './api/api'
 
 Vue.config.productionTip = false
 Vue.component('Nav', Nav)
 Vue.component('Layout', Layout)
+vueInit(Vue)
 
 new Vue({
   router,
