@@ -1,13 +1,10 @@
 <template>
-  <div>
-    我是简历
-    <Nav/>
-  </div>
+  <Layout>我是简历</Layout>
 </template>
 
 <script lang="ts">
 export default {
-  components: {  },
+  components: {},
 }
 </script>
 <style lang="scss" scoped>

@@ -1,8 +1,5 @@
 <template>
-  <div class="home">
-    home
-    <Nav/>
-  </div>
+  <Layout>home</Layout>
 </template>
 
 <script lang="ts">

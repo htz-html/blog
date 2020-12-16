@@ -1,6 +1,9 @@
 <template>
-  <div class="content">
+  <div class="wrapper">
+    <div class="content">
       <slot></slot>
+    </div>
+    <Nav/>
   </div>
 </template>
 
@@ -10,5 +13,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.wrapper{
+  .content{
+    padding-left: 100px;
+  }
+}
 </style>

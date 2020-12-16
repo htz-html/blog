@@ -1,8 +1,5 @@
 <template>
-  <div>
-    我是博客列表
-    <Nav/>
-  </div>
+  <Layout>我是博客列表</Layout>
 </template>
 
 <script lang="ts">
