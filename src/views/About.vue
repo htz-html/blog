@@ -6,11 +6,12 @@ import { function } from '../api/api';
 </template>
 
 <script>
+import { fjuserApi } from '../api/api'
 export default {
   name: "About",
   methods:{
     fun () {
-      this.$get('https://api.haobangni.com/sites/sys/banner/position',{}).then((res)=>{
+      fjuserApi.get("info",{}).then( res=>{
         console.log(res)
       })
     }

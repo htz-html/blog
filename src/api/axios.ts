@@ -112,55 +112,106 @@ axios.interceptors.response.use(
 //   }
 // }
 
-export function $post(url: string, data: object) {
-  return new Promise((resolve, reject) => {
-    axios
-      .post(url, data)
-      .then(
-        res => {
-          if (!res) {
-            return;
-          }
-          if (res.data && res.data.errorcode === 1) {
-            Notification(res.data.errormsg);
-            reject(res.data);
-          } else {
-            resolve(res.data);
-          }
-        },
-        res => {
-          reject(res);
-        }
-      )
-      .catch((err: string) => {
-        reject(err);
-      });
-  });
+// export default { 
+//   $post(url: string, data: object) {
+//     return new Promise((resolve, reject) => {
+//       axios
+//         .post(url, data)
+//         .then(
+//           res => {
+//             if (!res) {
+//               return;
+//             }
+//             if (res.data && res.data.errorcode === 1) {
+//               Notification(res.data.errormsg);
+//               reject(res.data);
+//             } else {
+//               resolve(res.data);
+//             }
+//           },
+//           res => {
+//             reject(res);
+//           }
+//         )
+//         .catch((err: string) => {
+//           reject(err);
+//         });
+//     });
+//   },
+
+//   $get(url: string, params: object) {
+//     return new Promise((resolve, reject) => {
+//       axios
+//         .get(url, { params })
+//         .then(
+//           res => {
+//             if (!res) {
+//               return;
+//             }
+//             if (res.data && res.data.errorcode === 1) {
+//               Notification(res.data.errormsg);
+//               reject(res.data);
+//             } else {
+//               resolve(res.data);
+//             }
+//           },
+//           res => {
+//             reject(res);
+//           }
+//         )
+//         .catch((err: string) => {
+//           reject(err);
+//         });
+//     });
+//   }
+// }
+
+
+export interface HbnRes {
+  data: any;
+  extdata?: any;
+  errorcode: number;
+  errormsg: string;
+}
+export interface HbnResWithConfig extends HbnRes {
+  _data: any;
+  _method: "get" | "post";
+}
+export interface HbnPostData {
+  args?: any;
+  data?: any;
+}
+const resPromise = (data: HbnRes, config: any) =>
+  data.errorcode === 0
+    ? Promise.resolve<HbnResWithConfig>({ ...data, ...config })
+    : Promise.reject<HbnResWithConfig>({ ...data, ...config });
+
+export class HbnAxios {
+  private baseUrl!: string;
+  constructor(_baseUrl?: string, _api?: string) {
+    if (_baseUrl) {
+      this.baseUrl = _baseUrl + "/" + _api + "/";
+    } else {
+      this.baseUrl = "";
+    }
+  }
+  async post(url: string, args?: any, data?: any) {
+    const res = await $axios.post<HbnResWithConfig>(this.baseUrl + url, {
+      args,
+      data
+    });
+    const _data = res.config.data ? JSON.parse(res.config.data) : {};
+    return resPromise(res.data, { _data, _methods: "post" });
+  }
+  async get(url: string, params?: any) {
+    const res = await $axios.get<HbnResWithConfig>(this.baseUrl + url, {
+      params
+    });
+    const _data =
+      res.config && res.config.data ? JSON.parse(res.config.data) : {};
+    return resPromise(res.data, { _data, _methods: "get" });
+  }
 }
 
-export function $get(url: string, params: object) {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(url, { params })
-      .then(
-        res => {
-          if (!res) {
-            return;
-          }
-          if (res.data && res.data.errorcode === 1) {
-            Notification(res.data.errormsg);
-            reject(res.data);
-          } else {
-            resolve(res.data);
-          }
-        },
-        res => {
-          reject(res);
-        }
-      )
-      .catch((err: string) => {
-        reject(err);
-      });
-  });
-}
+export const axiosEnums = new HbnAxios();
 
