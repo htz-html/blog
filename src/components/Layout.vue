@@ -1,21 +1,33 @@
 <template>
   <div class="wrapper">
-    <div class="content">
-      <slot/>
+    <div class="box">
+      <Search/>
+      <div class="content">
+        <slot/>
+      </div>
     </div>
     <Nav/>
   </div>
 </template>
-
 <script lang="ts">
-export default {
-  name: "Layout"
+import Nav from '@/components/Nav.vue';
+import Search from '@/components/Search.vue';
+import { Component, Vue } from "vue-property-decorator";
+@Component({
+  components:{Nav,Search},
+})
+export default class Layout extends Vue  {
+
 }
 </script>
 <style lang="scss" scoped>
 .wrapper{
-  .content{
+  .box{
     padding-left: 100px;
+    > .content {
+      width: 1100px;
+      margin: 0 auto;
+    }
   }
 }
 </style>
