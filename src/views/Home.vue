@@ -71,12 +71,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
 @Component({
   components: {},
 })
 export default class Home extends Vue {
-  url = ["https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"];
+  url = ['../../img/icons/myHead.jpg'];
   count=9;
   loading= false;
   get noMore(){
@@ -118,7 +117,7 @@ $textPadding:20px;
       flex: 1;
       padding-right: 50px;
       >.title{
-        margin-top: 5px;
+        margin-top: 10px;
         font-size: 40px;
       }
       >.describe{
