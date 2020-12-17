@@ -38,9 +38,12 @@
           </div>
         </div>
       </div>
-      <div class="article-item">
-        <ul>
-          <li>
+      <div class="article-item" style="overflow:auto;">
+        <ul
+          class="list"
+          v-infinite-scroll="load"
+          infinite-scroll-disabled="disabled">
+          <li v-for="i in count" :key="i">
             <div class="top text">
               <h2 class="ellipsis-2">什么是Vuex，它和单纯的全局对象有以下两点不同</h2>
               <div class="describe ellipsis-2">什么是Vuex？Vuex 是一个专为 Vue.js 应用程序开发的状态管理器，采用集中式存储管理应用，用基础组件的时候更像是使用原始的 HTML 元素，而不会担心哪个元素是</div>
@@ -60,15 +63,8 @@
             </div>
           </li>
         </ul>
-        <div class="page">
-          <el-pagination
-            :hide-on-single-page = "true"
-            :page-size="9"
-            :background='false'
-            layout="prev, pager, next"
-            :total="30">
-          </el-pagination>
-        </div>
+        <p v-if="loading"><i class="iconfont iconloading"></i>···</p>
+        <p v-if="noMore">没有更多了</p>
       </div>
     </div>
   </Layout>
@@ -81,26 +77,29 @@ import { Component, Vue } from "vue-property-decorator";
 })
 export default class Home extends Vue {
   url = ["https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"];
+  count=9;
+  loading= false;
+  get noMore(){
+    return this.count >= 20
+  }
+  get disabled(){
+    return this.loading || this.noMore
+  }
+  load () {
+    this.loading = true
+    setTimeout(() => {
+      this.count += 2
+      this.loading = false
+    }, 2000)
+  }
 }
 </script>
 <style lang="scss">
-$borderSize: 4px;
-.page{
-  .btn-prev,.btn-next{
-    background: none !important;
-    border: $borderSize solid #303133;
-    border-radius: $borderSize;
-    width: 60px;
-    height: 48px;
-    margin: 0 10px !important;
-    i{
-      font-size: 24px !important;
-    }
+.article-item{
+  p{
+    text-align: center;
+    padding: 20px 0;
   }
-  .btn-prev:hover,.btn-next:hover{
-    border: $borderSize solid #aaa;
-  }
-  .btn-prev:disabled,.btn-next:disabled{border: $borderSize solid #aaa;}
 }
 </style>
 <style lang="scss" scoped>
@@ -113,7 +112,6 @@ $bottomHeight:44px;
 $textPadding:20px;
 .home {
   margin-top: 80px;
-  overflow: hidden;
   >.content{
     display: flex;
     >.left{
@@ -219,10 +217,9 @@ $textPadding:20px;
             display: inline-block;
             min-height: $lookBtn;
             line-height: $lookBtn;
-            font-size: 16px;
             font-weight: bold;
             border-radius: $borderRadius;
-            color: #FBDD40;
+            color: #a4d7e9;
           }
           > h2{
             text-align: left;
@@ -235,10 +232,6 @@ $textPadding:20px;
         box-shadow: 0 0 10px #000;
         animation: liMove 1s ease-in-out;
       }
-    }
-    >.page{
-      margin: 30px 0;
-      text-align: center;
     }
   }
 }

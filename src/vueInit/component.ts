@@ -6,7 +6,8 @@ import {
   Autocomplete,
   Pagination,
   Card,
-  Image
+  Image,
+  InfiniteScroll
 } from 'element-ui';
 
 export const componentInit = (vm: VueConstructor) => {
@@ -16,6 +17,7 @@ export const componentInit = (vm: VueConstructor) => {
   vm.use(Pagination)
   vm.use(Card)
   vm.use(Image)
+  vm.use(InfiniteScroll)
 }
 
 
