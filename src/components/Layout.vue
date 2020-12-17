@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="box">
-      <Search/>
+      <Search v-if="isSearch"/>
       <div class="content">
         <slot/>
       </div>
@@ -12,12 +12,16 @@
 <script lang="ts">
 import Nav from '@/components/Nav.vue';
 import Search from '@/components/Search.vue';
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 @Component({
-  components:{Nav,Search},
+  components:{Nav,Search}
 })
 export default class Layout extends Vue  {
-
+  @Prop(Boolean) readonly isSearch!: boolean;
+  // get isSearch (){
+  //   console.log(11)
+  //   return 
+  // }
 }
 </script>
 <style lang="scss" scoped>

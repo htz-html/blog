@@ -24,6 +24,7 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class Nav extends Vue {  
 }
 </script>
+
 <style lang="scss" scoped>
 $thirty:30px;
 #Nav{
