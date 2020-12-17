@@ -4,7 +4,8 @@ import {
   Button, 
   Input, 
   Autocomplete,
-  Avatar
+  Avatar,
+  Card
 } from 'element-ui';
 
 export const componentInit = (vm: VueConstructor) => {
@@ -12,6 +13,7 @@ export const componentInit = (vm: VueConstructor) => {
   vm.use(Input)
   vm.use(Autocomplete)
   vm.use(Avatar)
+  vm.use(Card)
 }
 
 

@@ -33,9 +33,42 @@
         </div>
       </div>
       <div class="article-item">
-        <ul>
-          <li></li>
-        </ul>
+        <el-card shadow="hover" class="text-card">
+          <div class="top text">
+            <h2 class="ellipsis-2">什么是Vuex，它和单纯的全局对象有以下两点不同</h2>
+            <div class="describe ellipsis-2">什么是Vuex？Vuex 是一个专为 Vue.js 应用程序开发的状态管理器，采用集中式存储管理应用，用基础组件的时候更像是使用原始的 HTML 元素，而不会担心哪个元素是</div>
+          </div>
+          <div class="bottom">
+            <router-link to="#" class="look-btn">查看详情</router-link>
+          </div>
+        </el-card>
+        <el-card class="text-card" :body-style="{ padding: '0px' }">
+          <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          <div class="bottom clearfix">
+            <h2 class="ellipsis-1">什么是Vuex，它和单纯的全局对象有以下两点不同</h2>
+          </div>
+        </el-card>
+        <el-card shadow="hover" class="text-card">
+          <div class="top text">
+            <h2 class="ellipsis-2">什么是Vuex，它和单纯的全局对象有以下两点不同</h2>
+            <div class="describe ellipsis-2">什么是Vuex？Vuex 是一个专为 Vue.js 应用程序开发的状态管理器，采用集中式存储管理应用，用基础组件的时候更像是使用原始的 HTML 元素，而不会担心哪个元素是</div>
+          </div>
+          <div class="bottom">
+            <router-link to="#" class="look-btn">查看详情</router-link>
+          </div>
+        </el-card>
+        <el-card class="text-card" :body-style="{ padding: '0px' }">
+          <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          <div class="bottom clearfix">
+            <h2 class="ellipsis-1">什么是Vuex，它和单纯的全局对象有以下两点不同</h2>
+          </div>
+        </el-card>
+        <el-card class="text-card" :body-style="{ padding: '0px' }">
+          <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          <div class="bottom clearfix">
+            <h2 class="ellipsis-1">什么是Vuex，它和单纯的全局对象有以下两点不同</h2>
+          </div>
+        </el-card>
       </div>
     </div>
   </Layout>
@@ -49,10 +82,24 @@ import { Component, Vue } from "vue-property-decorator";
 })
 export default class Home extends Vue {}
 </script>
+<style lang="scss">
+.article-item .el-card__body{
+  display: grid;
+  grid-template-rows: 150px 66px;
+  padding: 0;
+}
+.image {
+    width: 100%;
+    display: block;
+  }
+</style>
 <style lang="scss" scoped>
-$borderRadius: 10px;
+$borderRadius: 4px;
 $lineHeight:60px;
 $positionTop: 140;
+$gridGap: 30px;
+$lookBtn: 44px;
+$bottomHeight:66px;
 .home {
   margin-top: 80px;
   >.content{
@@ -78,7 +125,7 @@ $positionTop: 140;
           padding: 0 30px;
           background: #47CF74;
           color:#121417;
-          border-radius: 4px;
+          border-radius: $borderRadius;
           font-weight:700;
         }
       }
@@ -118,8 +165,40 @@ $positionTop: 140;
   }
   >.article-item{
     margin-top: 100px;
-    height: 100px;
-    background: magenta;
+    display: grid;
+    grid-row-gap: $gridGap;
+    grid-column-gap: $gridGap;
+    grid-template-columns: 1fr 1fr 1fr;
+    .text-card{
+      color: white;
+      background: #2C303A;
+      border: none;
+      .top{
+        padding: 20px;
+        > .describe{
+          margin-top: 10px;
+        }
+      }
+      .top.text{
+        padding: 20px;
+      }
+      .bottom{
+        padding: 0 20px;
+        line-height: $bottomHeight;
+        background: #2C303A;
+        >.look-btn{
+          display: inline-block;
+          padding: 0 20px;
+          min-height: $lookBtn;
+          line-height: $lookBtn;
+          font-size: 16px;
+          font-weight: bold;
+          background: #444857;
+          border-radius: $borderRadius;
+        }
+      }
+    }
+    
   }
 }
 </style>
