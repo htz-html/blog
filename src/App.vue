@@ -14,7 +14,8 @@ export default {
     "$route": {
       handler: function(val, oldVal){
         console.log(val.name)
-        if(val.name === 'Home'){
+        if(val.name === 'About'){
+          console.log("我是home")
           this.isSearh = true
         }else{
           this.isSearh = false

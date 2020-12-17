@@ -7,6 +7,7 @@ import { function } from '../api/api';
 <script>
 import { fjuserApi } from '../api/api'
 export default {
+  props:["isSearh"],
   name: "About",
   methods:{
     fun () {
@@ -14,8 +15,11 @@ export default {
         console.log(res)
       })
     }
-  }
+  },
+  created() {
+    console.log("11111",this.isSearh)
 
+  }
 }
 </script>
 <style lang="scss" scoped>

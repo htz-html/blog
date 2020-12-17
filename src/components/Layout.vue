@@ -22,6 +22,9 @@ export default class Layout extends Vue  {
   //   console.log(11)
   //   return 
   // }
+  created() {
+    console.log(this.isSearch)
+  }
 }
 </script>
 <style lang="scss" scoped>
