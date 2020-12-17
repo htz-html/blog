@@ -181,10 +181,12 @@ export default {
 };
 </script>
 <style lang="scss" >
-$searchFontS:700;
+$searchFontS:500;
 $inputColor: white;
 $inputIcon:#444857;
-$borderRadius: 8px;
+$borderRadius: 4px;
+$inputHeight:48px;
+$inpBtn:18px;
 .search {
   padding: 30px 50px;
   display: flex;
@@ -192,30 +194,30 @@ $borderRadius: 8px;
     flex: 1;
     >.el-input > input{
       background: #252830 !important;
-      min-height: 60px;
+      min-height: $inputHeight;
       border: none;
-      font-size: 24px;
+      font-size: $inpBtn;
       font-weight: $searchFontS;
-      padding-left: 74px;
+      padding-left: 50px;
       font-style: normal !important;
       color:$inputColor !important;
       border-radius: $borderRadius;
     }
     i {
       font-weight: $searchFontS;
-      font-size: 28px;
-      margin-left: 30px;
+      font-size: 24px;
+      margin-left: 15px;
       color: $inputIcon;
-      line-height: 60px;
+      line-height: $inputHeight;
     }
   }
   > .search-btn {
-    width: 150px;
-    padding-left: 20px;
+    width: 120px;
+    text-align: right;
     > button{
-      width: 130px;
-      height: 60px;
-      font-size: 24px;
+      width: 100px;
+      height: $inputHeight;
+      font-size: $inpBtn;
       background: #47CF74;
       color:#121417;
       font-weight: $searchFontS;
