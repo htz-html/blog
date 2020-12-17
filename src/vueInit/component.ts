@@ -4,16 +4,18 @@ import {
   Button, 
   Input, 
   Autocomplete,
-  Avatar,
-  Card
+  Pagination,
+  Card,
+  Image
 } from 'element-ui';
 
 export const componentInit = (vm: VueConstructor) => {
   vm.use(Button)
   vm.use(Input)
   vm.use(Autocomplete)
-  vm.use(Avatar)
+  vm.use(Pagination)
   vm.use(Card)
+  vm.use(Image)
 }
 
 
