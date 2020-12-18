@@ -1,30 +1,8 @@
 <template>
   <div id="app">
-    <router-view :isSearh = "isSearh"></router-view>
+    <router-view></router-view>
   </div>
 </template>
-<script>
-export default {
-  data(){
-    return{
-      isSearh: false
-    }
-  },
-  watch:{
-    "$route": {
-      handler: function(val, oldVal){
-        console.log(val.name)
-        if(val.name === 'About'){
-          console.log("我是home")
-          this.isSearh = true
-        }else{
-          this.isSearh = false
-        }
-      }
-    }
-  },
-}
-</script>
 <style lang="scss">
 $bodyBackground: #121417;
 body{

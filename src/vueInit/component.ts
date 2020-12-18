@@ -7,7 +7,8 @@ import {
   Pagination,
   Card,
   Image,
-  InfiniteScroll
+  InfiniteScroll,
+  Popover
 } from 'element-ui';
 
 export const componentInit = (vm: VueConstructor) => {
@@ -18,6 +19,7 @@ export const componentInit = (vm: VueConstructor) => {
   vm.use(Card)
   vm.use(Image)
   vm.use(InfiniteScroll)
+  vm.use(Popover)
 }
 
 

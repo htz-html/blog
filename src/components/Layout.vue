@@ -18,13 +18,6 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 })
 export default class Layout extends Vue  {
   @Prop(Boolean) readonly isSearch!: boolean;
-  // get isSearch (){
-  //   console.log(11)
-  //   return 
-  // }
-  created() {
-    console.log(this.isSearch)
-  }
 }
 </script>
 <style lang="scss" scoped>

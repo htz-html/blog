@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :isSearch = isSearch>
     <div class="home">
       <div class="content">
         <div class="left">
@@ -75,6 +75,7 @@ import { Component, Vue } from "vue-property-decorator";
   components:{},
 })
 export default class Home extends Vue {
+  isSearch = this.$route.meta.isSearch;
   url = ['../../img/icons/myHead.jpg'];
   count=9;
   loading= false;

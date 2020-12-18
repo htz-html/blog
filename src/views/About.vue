@@ -1,4 +1,3 @@
-import { function } from '../api/api';
 <template>
   <Layout>
     <el-button type="primary" @click="fun">主要按钮</el-button>
@@ -7,7 +6,6 @@ import { function } from '../api/api';
 <script>
 import { fjuserApi } from '../api/api'
 export default {
-  props:["isSearh"],
   name: "About",
   methods:{
     fun () {
@@ -16,10 +14,6 @@ export default {
       })
     }
   },
-  created() {
-    console.log("11111",this.isSearh)
-
-  }
 }
 </script>
 <style lang="scss" scoped>
