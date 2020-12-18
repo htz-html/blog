@@ -35,6 +35,27 @@
           </div>
           <BaseInfo :baseInfo2="baseInfo2"></BaseInfo>
         </div>
+        <div class="job-wanted">
+          <div class="left">
+            <p class="title">求职期望</p>
+            <div class="content">
+              <span>Vue前端开发工程师</span>
+              <span>行业不限</span>
+            </div>
+          </div>
+          <div class="right">
+            <p>7-8K</p>
+          </div>
+        </div>
+        <div class="skill-introduce">
+          <p>1、熟悉iOS和Android的界面设计规范；</p>
+          <p>2、熟悉PS, AI, Axure, VScode, XMind等软件；</p>
+          <p>3、熟练BootStrap前端开发，熟悉Vue框架；</p>
+          <p>4、熟悉 <span>HTML, CSS, JS, Vue，Promise, Axios</span> 等；</p>
+          <p>5、项目经验：好邦伲公司微信公众号、官网、CRM后台、保姆/月嫂网站、保姆查询系统。参与更多项目等等等等。</p>
+        </div>
+        <div class="work-experience">工作经验</div>
+        <div class="skill-and-like">技能掌握 和 兴趣爱好</div>
       </div>
     </div>
   </Layout>
@@ -66,6 +87,9 @@ $boxRadius:60px;
 $lineHeight:96px;
 $infoRadius:30px;
 $infoPadding: 40px;
+$fontSize24: 24px;
+$fontSize30: 30px;
+$fontSize36: 36px;
 .resume-box {
   margin-top: 240px;
   padding: 26px;
@@ -83,7 +107,7 @@ $infoPadding: 40px;
     display: flex;
     > .time {
       width: 200px;
-      font-size: 36px;
+      font-size: $fontSize36;
       font-weight: bold;
       text-align: center;
     }
@@ -100,14 +124,14 @@ $infoPadding: 40px;
       width: 200px;
       text-align: right;
       i {
-        font-size: 30px;
+        font-size: $fontSize30;
       }
     }
   }
   > .title {
     margin-top: 90px;
     h1 {
-      font-size: 36px;
+      font-size: $fontSize36;
     }
     p {
       width: 470px;
@@ -143,6 +167,54 @@ $infoPadding: 40px;
         font-size: 28px;
         font-weight: bold;
       }
+    }
+  }
+  .job-wanted{
+    font-weight: bold;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    >.left{
+      padding: 10px 0;
+    }
+    >.left>.title{
+      font-size: $fontSize24;
+    }
+    >.left>.content{
+      margin-top: 10px;
+      span{
+        font-size: $fontSize30;
+        margin-right: 30px;
+      }
+    }
+    .right{
+      p{
+        width: 200px;
+        background: #FBDD40;
+        font-size: $fontSize36;
+        color: #121417;
+        text-align: center;
+        border-radius: $infoRadius;
+        padding: 28px 0;
+      }
+    }
+  }
+  .skill-introduce{
+    margin-top: 50px;
+    background: #00369D;
+    padding: $infoPadding;
+    border-radius: $infoRadius;
+    p{
+      font-size: $fontSize24;
+      line-height: 36px;
+      color: #ddd;
+      span{
+        color: #FBDD40;
+        font-weight: bold;
+      }
+    }
+    p:not(:last-child){
+      margin-bottom: 20px;
     }
   }
 }
