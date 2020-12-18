@@ -83,6 +83,33 @@
               v-for="(item, index) in tabs" 
               :key="index">{{item}}</div>
           </div>
+          <div class="tab-content" v-if="tabActive===0">
+            <ul class="content1">
+              <li>
+                <span><img src="https://cn.vuejs.org/images/logo.png" style="height:50px"></span>
+                <p>Vue.js</p>
+              </li>
+              <li>
+                <span>H/C</span>
+                <p>HTML/CSS</p>
+              </li>
+              <li>
+                <span>JS</span>
+                <p>JavaScript</p>
+              </li>
+            </ul>
+            <ul class="content2">
+              <li><span><span>Ps</span></span><p>PhotoShop</p></li>
+              <li><span><span>Ai</span></span><p>Illustrator</p></li>
+              <li><span><span>Xd</span></span><p>XD</p></li>
+              <li><span><img src="../assets/image/sketch.png" style="height:50px"></span><p>Sketch</p></li>
+              <li><span><img src="../assets/image/figma.png" style="height:50px"></span><p>Figma</p></li>
+            </ul>
+          </div>
+          <div class="tab-content" v-if="tabActive===1">2</div>
+        </div>
+        <div class="thanks">
+          <el-divider>感谢您看到底</el-divider>
         </div>
       </div>
     </div>
@@ -131,6 +158,10 @@ $fontSize30: 30px;
 $fontSize36: 36px;
 $itemBackGround:#2C2E37;
 $borderCircle: 100px;
+$border50: 50%;
+$spanHeight:46px;
+$dividerBack:#1F2026;
+$boxMarginTop:50px;
 .resume-box {
   margin-top: 240px;
   padding: 26px;
@@ -139,7 +170,7 @@ $borderCircle: 100px;
   border: 2px solid rgb(73, 73, 73);
 }
 .resume {
-  background-color: #1f2026;
+  background-color: $dividerBack;
   padding: 0 40px 40px;
   border-radius: $boxRadius;
   > .status {
@@ -212,7 +243,7 @@ $borderCircle: 100px;
   }
   .job-wanted{
     font-weight: bold;
-    margin-top: 50px;
+    margin-top: $boxMarginTop;
     display: flex;
     justify-content: space-between;
     >.left{
@@ -241,7 +272,7 @@ $borderCircle: 100px;
     }
   }
   .skill-introduce{
-    margin-top: 50px;
+    margin-top: $boxMarginTop;
     background: #00369D;
     padding: $infoPadding;
     border-radius: $infoRadius;
@@ -259,10 +290,10 @@ $borderCircle: 100px;
     }
   }
   .work-experience{
-    margin-top: 50px;
+    margin-top: $boxMarginTop;
   }
   .skill-and-like{
-    margin-top: 50px;
+    margin-top: $boxMarginTop;
     background: $itemBackGround;
     border-radius: $infoRadius;
     padding: $infoPadding;
@@ -283,9 +314,85 @@ $borderCircle: 100px;
     }
     .active{
       width: 280px;
-      background: #2569EA;
       border-radius: $borderCircle;
       color: #fff;
+    }
+    .tab-content{
+      margin-top: 100px;
+      >.content1 > li > span{
+        background: #fff;
+        color: #FF6C36;
+      }
+      >.content2>li{
+        >span{
+          background: #444857;
+          span{
+            display: inline-block;
+            height: $spanHeight;
+            width: $spanHeight; 
+            line-height: $spanHeight;
+            margin-top: 16px;
+            border-radius: 10px;
+          }
+        }
+      }
+      >.content2 li:nth-child(1){
+        >span>span{
+          background: #061E26;
+          border: 2px solid #48C9FC;
+          color: #D9F5FF;
+        }
+      }
+      >.content2 li:nth-child(2){
+        >span>span{
+          background: #251402;
+          border: 2px solid #F68123;
+          color: #ffa55c;
+        }
+      }
+      >.content2 li:nth-child(3){
+        >span>span{
+          background: #470137;
+          border: 2px solid #98154D;
+          color:#fd8dfd;
+        }
+      }
+      >.content1, .content2 {
+        display: flex;
+        margin-top: 70px;
+        > li {
+          width: 20%;
+          text-align: center;
+          > span {
+            display: inline-block;
+            width: 88px;
+            height: 88px;
+            border-radius: $border50;
+            line-height: 88px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+          }
+          >p{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+  .thanks{
+    margin-top: $boxMarginTop;
+    padding: 0 250px;
+    .el-divider__text{
+      background: $dividerBack;
+      font-size: 24px;
+      color: #444857;
+    }
+    .el-divider{
+      background-color: #444857;
     }
   }
 }
