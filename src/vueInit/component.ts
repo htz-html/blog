@@ -9,7 +9,8 @@ import {
   Image,
   InfiniteScroll,
   Popover,
-  Collapse
+  Collapse,
+  CollapseItem
 } from 'element-ui';
 
 export const componentInit = (vm: VueConstructor) => {
@@ -22,6 +23,7 @@ export const componentInit = (vm: VueConstructor) => {
   vm.use(InfiniteScroll)
   vm.use(Popover)
   vm.use(Collapse)
+  vm.use(CollapseItem)
 }
 
 

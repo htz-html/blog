@@ -54,8 +54,29 @@
           <p>4、熟悉 <span>HTML, CSS, JS, Vue，Promise, Axios</span> 等；</p>
           <p>5、项目经验：好邦伲公司微信公众号、官网、CRM后台、保姆/月嫂网站、保姆查询系统。参与更多项目等等等等。</p>
         </div>
-        <div class="work-experience">工作经验</div>
-        <div class="skill-and-like">技能掌握 和 兴趣爱好</div>
+        <div class="work-experience">
+          <el-collapse v-model="activeName" accordion>
+            <el-collapse-item 
+              v-for="item in works" 
+              :key="item.name" 
+              :name="item.name">
+              <template slot="title">
+                <div>
+                  <p>{{item.title}}</p>
+                <p style="font-size:20px">2017.04 - 2021.01</p>
+                </div>
+              </template>
+              <div v-if="item.p1">1、{{item.p1}}</div>
+              <div v-if="item.p2">2、{{item.p2}}</div>
+              <div v-if="item.p3">3、{{item.p3}}</div>
+              <div v-if="item.p4">4、{{item.p4}}</div>
+              <div v-if="item.p5">5、{{item.p5}}</div>
+            </el-collapse-item>
+          </el-collapse>
+        </div>
+        <div class="skill-and-like">
+
+        </div>
       </div>
     </div>
   </Layout>
@@ -79,6 +100,11 @@ export default class Resume extends Vue {
     {placement: "bottom", title:"Mail", content: "1006676722@qq.com", iconName:"iconmailbox"},
     {placement: "bottom", title:"Address", content: "湖北恩施", iconName:"iconaddress"},
     {placement: "bottom-end", title:"School", content: "湖北民族学院科技学院", iconName:"iconschool"}
+  ];
+  activeName=["1"];
+  works=[
+    {title:"厦门好邦伲家政服务有限公司", name:"1",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+    {title:"逛逛网(厦门)有限公司", name:"2",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
   ]
 }
 </script>
@@ -90,6 +116,7 @@ $infoPadding: 40px;
 $fontSize24: 24px;
 $fontSize30: 30px;
 $fontSize36: 36px;
+$itemBackGround:#2C2E37;
 .resume-box {
   margin-top: 240px;
   padding: 26px;
@@ -141,7 +168,7 @@ $fontSize36: 36px;
   }
   .base-info{
     margin-top: 130px;
-    background: #2C2E37;
+    background: $itemBackGround;
     border-radius: $infoRadius;
     padding: $infoPadding;
     .head{
@@ -216,6 +243,41 @@ $fontSize36: 36px;
     p:not(:last-child){
       margin-bottom: 20px;
     }
+  }
+  .work-experience{
+    margin-top: 50px;
+  }
+  .skill-and-like{
+    margin-top: 50px;
+    background: $itemBackGround;
+    border-radius: $infoRadius;
+    padding: $infoPadding;
+  }
+}
+</style>
+<style lang="scss">
+.work-experience{
+  .el-collapse-item__header,.el-collapse-item__wrap{
+    background: #2C2E37;
+  }
+  .el-collapse,.el-collapse-item__header,.el-collapse-item__wrap{
+    border:none;
+  }
+  .el-collapse-item{
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .el-collapse-item__header{
+    color: #fff;
+    font-size: 30px;
+    padding: 30px 40px;
+    height: auto;
+  }
+  .el-collapse-item__content{
+    color: #fff;
+    padding: 0 40px 40px;
+    font-size: 20px;
   }
 }
 </style>
