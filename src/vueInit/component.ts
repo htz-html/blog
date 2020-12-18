@@ -10,7 +10,7 @@ import {
   InfiniteScroll,
   Popover,
   Collapse,
-  CollapseItem
+  CollapseItem,
 } from 'element-ui';
 
 export const componentInit = (vm: VueConstructor) => {

@@ -75,7 +75,14 @@
           </el-collapse>
         </div>
         <div class="skill-and-like">
-
+          <div class="tabs flex-center">
+            <div 
+              class="tab-pane" 
+              @click="changeTab(index)"  
+              :class="{active: index===tabActive}"
+              v-for="(item, index) in tabs" 
+              :key="index">{{item}}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -102,10 +109,16 @@ export default class Resume extends Vue {
     {placement: "bottom-end", title:"School", content: "湖北民族学院科技学院", iconName:"iconschool"}
   ];
   activeName=["1"];
+  skillLike="first";
   works=[
     {title:"厦门好邦伲家政服务有限公司", name:"1",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
     {title:"逛逛网(厦门)有限公司", name:"2",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
-  ]
+  ];
+  tabs=["技能掌握","兴趣爱好"];
+  tabActive = 0;
+  changeTab(index: number){
+    this.tabActive = index
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -117,6 +130,7 @@ $fontSize24: 24px;
 $fontSize30: 30px;
 $fontSize36: 36px;
 $itemBackGround:#2C2E37;
+$borderCircle: 100px;
 .resume-box {
   margin-top: 240px;
   padding: 26px;
@@ -252,6 +266,27 @@ $itemBackGround:#2C2E37;
     background: $itemBackGround;
     border-radius: $infoRadius;
     padding: $infoPadding;
+    >.tabs{
+      background: #fff;
+      width: 460px;
+      margin: 0 auto;
+      border-radius: $borderCircle;
+    }
+    .tab-pane{
+      font-size: 24px;
+      min-height: 80px;
+      line-height: 80px;
+      color: #333;
+      font-weight: bold;
+      width: 230px;
+      text-align: center;
+    }
+    .active{
+      width: 280px;
+      background: #2569EA;
+      border-radius: $borderCircle;
+      color: #fff;
+    }
   }
 }
 </style>
