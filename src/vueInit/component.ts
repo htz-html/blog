@@ -11,7 +11,9 @@ import {
   Popover,
   Collapse,
   CollapseItem,
-  Divider
+  Divider,
+  Tabs,
+  TabPane
 } from 'element-ui';
 
 export const componentInit = (vm: VueConstructor) => {
@@ -26,6 +28,8 @@ export const componentInit = (vm: VueConstructor) => {
   vm.use(Collapse)
   vm.use(CollapseItem)
   vm.use(Divider)
+  vm.use(Tabs)
+  vm.use(TabPane)
 }
 
 

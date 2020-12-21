@@ -75,38 +75,76 @@
           </el-collapse>
         </div>
         <div class="skill-and-like">
-          <div class="tabs flex-center">
-            <div 
-              class="tab-pane" 
-              @click="changeTab(index)"  
-              :class="{active: index===tabActive}"
-              v-for="(item, index) in tabs" 
-              :key="index">{{item}}</div>
-          </div>
-          <div class="tab-content" v-if="tabActive===0">
-            <ul class="content1">
-              <li>
-                <span><img src="https://cn.vuejs.org/images/logo.png" style="height:50px"></span>
-                <p>Vue.js</p>
-              </li>
-              <li>
-                <span>H/C</span>
-                <p>HTML/CSS</p>
-              </li>
-              <li>
-                <span>JS</span>
-                <p>JavaScript</p>
-              </li>
-            </ul>
-            <ul class="content2">
-              <li><span><span>Ps</span></span><p>PhotoShop</p></li>
-              <li><span><span>Ai</span></span><p>Illustrator</p></li>
-              <li><span><span>Xd</span></span><p>XD</p></li>
-              <li><span><img src="../assets/image/sketch.png" style="height:50px"></span><p>Sketch</p></li>
-              <li><span><img src="../assets/image/figma.png" style="height:50px"></span><p>Figma</p></li>
-            </ul>
-          </div>
-          <div class="tab-content" v-if="tabActive===1">2</div>
+          <el-tabs v-model="currentName" >
+            <el-tab-pane label="用户管理" name="first">
+              <ul class="tabs">
+                <li>
+                  <div class="tab-bg ">
+                    <img src="https://cn.vuejs.org/images/logo.png">
+                  </div>
+                  <p>Vue.js</p>
+                </li>
+                <li>
+                  <div class="tab-bg ">
+                    <div class="text">H/C</div>
+                  </div>
+                  <p>HTML/CSS</p>
+                </li>
+                <li>
+                  <div class="tab-bg">
+                    <div class="text">JS</div>
+                  </div>
+                  <p>JavaScript</p>
+                </li>
+              </ul>
+              <ul class="tabs">
+                <li>
+                  <div class="tab-bg bg">
+                    <div class="design ps">Ps</div>
+                  </div>
+                  <p>Photoshop</p>
+                </li>
+                <li>
+                  <div class="tab-bg bg">
+                    <div class="design ai">Ai</div>
+                  </div>
+                  <p>Illustrator</p>
+                </li>
+                <li>
+                  <div class="tab-bg bg">
+                    <div class="design xd">Xd</div>
+                  </div>
+                  <p>Adobe XD</p>
+                </li>
+                <li>
+                  <div class="tab-bg bg">
+                    <img src="../assets/image/sketch.png">
+                  </div>
+                  <p>Sketch</p>
+                </li>
+                <li>
+                  <div class="tab-bg bg">
+                    <img src="../assets/image/figma.png">
+                  </div>
+                  <p>Figma</p>
+                </li>
+              </ul>
+            </el-tab-pane>
+            <el-tab-pane label="配置管理" name="second">
+              <div class="like">
+                <span style="left:100px;top:50px;padding: 6px 14px;font-size:16px">看新闻</span>
+                <span style="left:50px;top:180px;padding: 8px 20px;font-size:24px">逛知乎</span>
+                <span style="left:290px;top:150px;padding: 6px 20px;font-size:24px">篮球</span>
+                <span style="left:600px;top:200px;padding: 4px 10px;font-size:30px">你好</span>
+                <span style="left:230px;top:10px;padding: 3px 10px;font-size:18px">你好</span>
+                <span style="left:520px;top:100px;padding: 4px 22px;font-size:14px">你好</span>
+                <span style="left:250px;top:300px;padding: 7px 10px;font-size:14px">你好</span>
+                <span style="left:800px;top:500px;padding: 5px 15px;font-size:30px">你好</span>
+                <span style="left:700px;top:360px;padding: 4px 18px;font-size:18px">你好</span>
+                <span style="left:700px;top:50px;padding: 10px 15px;font-size:18px">你好</span>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
         </div>
         <div class="thanks">
           <el-divider>感谢您看到底</el-divider>
@@ -119,6 +157,9 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import BaseInfo from '../components/BaseInfo.vue';
+window.addEventListener("beforeunload", e=>{
+  window.scroll(0,0)
+})
 @Component({
   components:{BaseInfo}
 })
@@ -141,11 +182,7 @@ export default class Resume extends Vue {
     {title:"厦门好邦伲家政服务有限公司", name:"1",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
     {title:"逛逛网(厦门)有限公司", name:"2",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
   ];
-  tabs=["技能掌握","兴趣爱好"];
-  tabActive = 0;
-  changeTab(index: number){
-    this.tabActive = index
-  }
+  currentName = "first";
 }
 </script>
 <style lang="scss" scoped>
@@ -162,6 +199,7 @@ $border50: 50%;
 $spanHeight:46px;
 $dividerBack:#1F2026;
 $boxMarginTop:50px;
+
 .resume-box {
   margin-top: 240px;
   padding: 26px;
@@ -297,89 +335,71 @@ $boxMarginTop:50px;
     background: $itemBackGround;
     border-radius: $infoRadius;
     padding: $infoPadding;
-    >.tabs{
-      background: #fff;
-      width: 460px;
-      margin: 0 auto;
-      border-radius: $borderCircle;
-    }
-    .tab-pane{
-      font-size: 24px;
-      min-height: 80px;
-      line-height: 80px;
-      color: #333;
-      font-weight: bold;
-      width: 230px;
-      text-align: center;
-    }
-    .active{
-      width: 280px;
-      border-radius: $borderCircle;
-      color: #fff;
-    }
-    .tab-content{
-      margin-top: 100px;
-      >.content1 > li > span{
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      >li{
+        width: 20%;
+        text-align: center;
+        margin-top: 30px;
+      }
+      li > .tab-bg{
         background: #fff;
-        color: #FF6C36;
-      }
-      >.content2>li{
-        >span{
-          background: #444857;
-          span{
-            display: inline-block;
-            height: $spanHeight;
-            width: $spanHeight; 
-            line-height: $spanHeight;
-            margin-top: 16px;
-            border-radius: 10px;
+        border-radius: $border50;
+        height: 88px;
+        width: 88px;
+        display: inline-block;
+        line-height: 88px;
+        img{
+          height: 50px;
+        }
+        .text{
+          font-size: 24px;
+          color: #FF6C36;
+          font-weight: bold;
+        }
+        .design{
+          display: inline-block;
+          height: 44px;
+          width: 44px;
+          font-size: 24px;
+          font-weight: bold;
+          line-height: 44px;
+          border-radius: 6px;
+          border: 2px solid;
+          &.ps{
+            background: #061E26;
+            color: #D9F5FF;
+            border-color: #48C9FC;
+          }
+          &.ai{
+            background: #251402;
+            color: #F68123;
+            border-color: #F68123;
+          }
+          &.xd{
+            background: #470137;
+            color: #FFACFF;
+            border-color: #98154D;
           }
         }
       }
-      >.content2 li:nth-child(1){
-        >span>span{
-          background: #061E26;
-          border: 2px solid #48C9FC;
-          color: #D9F5FF;
-        }
+      li> .tab-bg.bg{
+        background: #444857;
       }
-      >.content2 li:nth-child(2){
-        >span>span{
-          background: #251402;
-          border: 2px solid #F68123;
-          color: #ffa55c;
-        }
+      li>p{
+        margin-top: 10px;
       }
-      >.content2 li:nth-child(3){
-        >span>span{
-          background: #470137;
-          border: 2px solid #98154D;
-          color:#fd8dfd;
-        }
-      }
-      >.content1, .content2 {
-        display: flex;
-        margin-top: 70px;
-        > li {
-          width: 20%;
-          text-align: center;
-          > span {
-            display: inline-block;
-            width: 88px;
-            height: 88px;
-            border-radius: $border50;
-            line-height: 88px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-          }
-          >p{
-            text-align: center;
-            font-size: 20px;
-            font-weight: 500;
-            margin-top: 20px;
-          }
-        }
+    }
+    .like{
+      height: 400px;
+      position: relative;
+      margin-top: 30px;
+      span{
+        position: absolute;
+        background: rgba($color: #fff, $alpha: 0.1);
+        border-radius: 4px;
       }
     }
   }
@@ -420,6 +440,38 @@ $boxMarginTop:50px;
     color: #fff;
     padding: 0 40px 40px;
     font-size: 20px;
+  }
+}
+.skill-and-like{
+  .el-tabs__nav-wrap::after{
+    width: 0;
+  }
+  .el-tabs__nav{
+    background: #fff;
+    width: 420px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50px;
+    .el-tabs__item{
+      font-size: 24px;
+      width: 210px;
+      text-align: center;
+      z-index: 1;
+      line-height: 80px;
+    }
+  }
+  .el-tabs__active-bar{
+    height: 80px;
+    border-radius: 50px;
+  }
+  .is-active{
+    color: #fff !important;
+  }
+  .el-tabs__nav-wrap{
+    text-align: center;
+  }
+  .el-tabs__nav-scroll{
+    display: inline-block;
   }
 }
 </style>
