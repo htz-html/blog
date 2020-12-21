@@ -13,7 +13,7 @@ export default {
         console.log(res)
       })
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

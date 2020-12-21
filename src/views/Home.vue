@@ -92,6 +92,33 @@ export default class Home extends Vue {
       this.loading = false
     }, 2000)
   }
+  articlesData = [
+    {
+      id:1,
+      title: "生成一个随机字符串",
+      content: `
+      <div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;" xml:space="preserve"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">const NewGuid = () =&gt; {
+  const s = [];
+  const hexDigits = "0123456789abcdef";
+  for (let i = 0; i &lt; 36; i++) {
+    s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+  }
+  s[14] = "4";
+  s[19] = hexDigits.substr((+s[19] &amp; 0x3) | 0x8, 1);
+  return s.join("");
+};
+</code></pre>
+</div>
+      `
+    },
+    {
+      id:2,
+      title: '我是标题',
+      content: `
+      我是内容
+      `
+    }
+  ]
 }
 </script>
 <style lang="scss">
