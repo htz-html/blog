@@ -43,10 +43,10 @@
           class="list"
           v-infinite-scroll="load"
           infinite-scroll-disabled="disabled">
-          <li v-for="i in count" :key="i">
+          <li v-for="item in articlesData" :key="item.id" @click="goArticleDetail(item.id)">
             <div class="top text">
-              <h2 class="ellipsis-2">什么是Vuex，它和单纯的全局对象有以下两点不同</h2>
-              <div class="describe ellipsis-2">什么是Vuex？Vuex 是一个专为 Vue.js 应用程序开发的状态管理器，采用集中式存储管理应用，用基础组件的时候更像是使用原始的 HTML 元素，而不会担心哪个元素是</div>
+              <h2 class="ellipsis-2">{{item.title}}</h2>
+              <div class="describe ellipsis-2">{{item.describe}}</div>
             </div>
             <div class="bottom">
               <router-link to="#" class="look-btn">查看详情</router-link>
@@ -80,7 +80,7 @@ export default class Home extends Vue {
   count=9;
   loading= false;
   get noMore(){
-    return this.count >= 20
+    return this.count >= this.articlesData.length
   }
   get disabled(){
     return this.loading || this.noMore
@@ -96,6 +96,7 @@ export default class Home extends Vue {
     {
       id:1,
       title: "生成一个随机字符串",
+      describe: `<div style="font-size: 14px; margin: 0; padding: 0; width: 100%;`,
       content: `
       <div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;" xml:space="preserve"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">const NewGuid = () =&gt; {
   const s = [];
@@ -114,11 +115,15 @@ export default class Home extends Vue {
     {
       id:2,
       title: '我是标题',
+      describe: '我是描述',
       content: `
       我是内容
       `
     }
-  ]
+  ];
+  goArticleDetail(Id: string){
+    this.$router.push({path: "pagedetail", query:{id: Id}})
+  }
 }
 </script>
 <style lang="scss">

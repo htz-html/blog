@@ -29,9 +29,9 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/About.vue')
   },
   {
-    path: '/articles/ProxyReflect',
-    name: 'ProxyReflect',
-    component: () => import('@/views/articles/ProxyReflect.vue')
+    path: '/pagedetail',
+    name: 'pagedetail',
+    component: () => import('@/views/ArticleDetail.vue')
   },
   {
     path: '*',
