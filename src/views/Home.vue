@@ -43,7 +43,7 @@
           class="list"
           v-infinite-scroll="load"
           infinite-scroll-disabled="disabled">
-          <li v-for="item in articlesData" :key="item.id" @click="goArticleDetail(item.id)">
+          <li v-for="item in articlesData" :key="item.id" @click="goArticleDetail(item)">
             <div class="top text">
               <h2 class="ellipsis-2">{{item.title}}</h2>
               <div class="describe ellipsis-2">{{item.describe}}</div>
@@ -70,6 +70,7 @@
   </Layout>
 </template>
 <script lang="ts">
+import router from "@/router";
 import { Component, Vue } from "vue-property-decorator";
 @Component({
   components:{},
@@ -96,21 +97,9 @@ export default class Home extends Vue {
     {
       id:1,
       title: "生成一个随机字符串",
-      describe: `<div style="font-size: 14px; margin: 0; padding: 0; width: 100%;`,
-      content: `
-      <div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;" xml:space="preserve"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">const NewGuid = () =&gt; {
-  const s = [];
-  const hexDigits = "0123456789abcdef";
-  for (let i = 0; i &lt; 36; i++) {
-    s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-  }
-  s[14] = "4";
-  s[19] = hexDigits.substr((+s[19] &amp; 0x3) | 0x8, 1);
-  return s.join("");
-};
-</code></pre>
-</div>
-      `
+      describe: '生成一个随机字符串',
+      artUrl:'https://cli.vuejs.org/zh/config/',
+      content: ''
     },
     {
       id:2,
@@ -121,8 +110,12 @@ export default class Home extends Vue {
       `
     }
   ];
-  goArticleDetail(Id: string){
-    this.$router.push({path: "pagedetail", query:{id: Id}})
+  goArticleDetail(item: any){
+    if(item.artUrl){
+      window.open('https://cli.vuejs.org/zh/config/', '_blank')
+    }else{
+      this.$router.push({path: "pagedetail", query:{id: item.id}})
+    }
   }
 }
 </script>

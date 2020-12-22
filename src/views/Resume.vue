@@ -157,9 +157,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import BaseInfo from '../components/BaseInfo.vue';
-window.addEventListener("beforeunload", e=>{
-  window.scroll(0,0)
-})
+
 @Component({
   components:{BaseInfo}
 })
