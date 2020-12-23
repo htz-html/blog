@@ -38,12 +38,12 @@
           </div>
         </div>
       </div>
-      <div class="article-item" style="overflow:auto;">
+      <div class="article-item" style="overflow:scroll;height:800px">
         <ul
           class="list"
           v-infinite-scroll="load"
           infinite-scroll-disabled="disabled">
-          <li v-for="item in articlesData" :key="item.id" @click="goArticleDetail(item)">
+          <li v-for="item in list" :key="item.id" @click="goArticleDetail(item)">
             <div class="top text">
               <h2 class="ellipsis-2">{{item.title}}</h2>
               <div class="describe ellipsis-2">{{item.describe}}</div>
@@ -53,8 +53,10 @@
             </div>
           </li>
         </ul>
-        <p v-if="loading"><i class="iconfont iconloading"></i>···</p>
+        <div class="loading">
+          <p v-if="loading" class="rotate"><i class="iconfont iconloading"></i></p>
         <p v-if="noMore">没有更多了</p>
+        </div>
       </div>
     </div>
   </Layout>
@@ -68,20 +70,14 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Home extends Vue {
   isSearch = this.$route.meta.isSearch;
   url = ['../../img/icons/myHead.jpg'];
-  count=9;
+  count=12;
   loading= false;
+  list = [] as any [];
   get noMore(){
     return this.count >= this.articlesData.length
   }
   get disabled(){
     return this.loading || this.noMore
-  }
-  load () {
-    this.loading = true
-    setTimeout(() => {
-      this.count += 2
-      this.loading = false
-    }, 2000)
   }
   articlesData = [
     {
@@ -421,6 +417,21 @@ export default class Home extends Vue {
       describe:'1.jQuery 2.modulejs modulejs是极致模块化的且面向对象的javascript框架，modulejs能让你在简单易用的前提下写出更佳维护性和可重用性的javascript代码。'
     }
   ];
+  created() {
+    this.list = this.articlesData.slice(0,this.count)
+  }
+  load () {
+    this.loading = true;
+    const moreData = this.articlesData.slice(this.count, this.count+2)
+    setTimeout(() => {
+      moreData.forEach(item=>{
+        this.list.push(item)
+      })
+      this.count += 2
+      this.loading = false
+      console.log(this.list)
+    }, 2000)
+  }
   goArticleDetail(item: any){
     if(item.artUrl){
       window.open(item.artUrl, '_blank')
@@ -431,11 +442,26 @@ export default class Home extends Vue {
 }
 </script>
 <style lang="scss">
+@keyframes rotate{
+  0%{transform: rotate(0deg)}
+  100%{transform: rotate(360deg)}
+}
 .article-item{
-  p{
+  .loading {
     text-align: center;
-    padding: 20px 0;
+    p{
+      display: inline-block;
+      padding: 20px 0;
+    }
+    .rotate{
+      transform-origin: 8px 30px;
+      animation: rotate .5s linear infinite;
+    }
   }
+}
+//隐藏滚动条
+.article-item::-webkit-scrollbar {
+  display: none;
 }
 </style>
 <style lang="scss" scoped>
