@@ -79,7 +79,7 @@ export default class Home extends Vue {
   load () {
     this.loading = true
     setTimeout(() => {
-      this.count += 9
+      this.count += 2
       this.loading = false
     }, 2000)
   }
@@ -423,7 +423,7 @@ export default class Home extends Vue {
   ];
   goArticleDetail(item: any){
     if(item.artUrl){
-      window.open('https://cli.vuejs.org/zh/config/', '_blank')
+      window.open(item.artUrl, '_blank')
     }else{
       this.$router.push({path: "pagedetail", query:{id: item.id}})
     }

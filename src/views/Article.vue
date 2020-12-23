@@ -1,13 +1,17 @@
 <template>
-  <Layout>我是博客列表</Layout>
+  <Layout>
+    <div></div>
+  </Layout>
 </template>
 
-<script lang="ts">
+<script>
 export default {
-  name:"Article"    
+  name:"Article",
 }
 </script>
 
 <style lang="scss" scoped>
-
+.wrapper{
+  height: 100vh;
+}
 </style>
