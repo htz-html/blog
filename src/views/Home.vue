@@ -50,6 +50,29 @@
           </div>
         </div>
       </div>
+      <div class="design">
+        <div class="explain">
+          <h2 class="title">其实我以前是一个UI设计师</h2>
+          <p>我很享受设计中的色彩，勾勒出喜欢的形状，如果你要问我为什么想去做前端？</p>
+          <p>是挑战，是乐趣，富满激情的一种突破。设计是形，而代码就是实，把形转换为实。</p>
+          <div class="design-btn">
+            <router-link class="design-btn-link" to=''>站酷个人主页</router-link>
+          </div>
+        </div>
+        <div style="width:100px">
+          <button @click="btnYiD">动画</button>
+        </div>
+        <transition name="fade">
+          <div class="opus-items" :class="{xxx:show}">
+            <div class="img">
+              <img src=""/>
+            </div>
+            <h2 class="title ellipsis-1">对象字面量表示法与 JSON</h2>
+            <p class="time">2020年10月26日</p>
+          </div>
+        </transition>
+        
+      </div>
     </div>
   </Layout>
 </template>
@@ -81,7 +104,11 @@ export default class Home extends Vue {
       artUrl:'https://www.yinxiang.com/everhub/note/2f5b673a-7957-4f33-a643-64a6c353a1d6',
       describe:'yield 是什么？ yield 是 es6 新的关键字，使生成器函数执行暂停。yield 后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的 return 关键字。 yiel'
     }
-  ]
+  ];
+  show= false;
+  btnYiD(){
+    this.show=true
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -93,6 +120,7 @@ $gridGap: 30px;
 $lookBtn: 44px;
 $bottomHeight:44px;
 $textPadding:20px;
+$listBackground:#252830;
 .home {
   margin-top: 80px;
   >.content{
@@ -157,13 +185,13 @@ $textPadding:20px;
       border-radius: 50%;
     }
   }
-  .list{
+  >.list{
     margin-top: 120px;
     display: flex;
     justify-content:space-between;
     >.item{
       width: 340px;
-      background: #252830;
+      background: $listBackground;
       border-radius: $borderRadius10;
       padding: 20px;
       box-sizing: border-box;
@@ -196,7 +224,79 @@ $textPadding:20px;
       }
     }
   }
+  >.design{
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    >.explain{
+      width: 340px;
+      border-radius: $borderRadius10;
+    }
+    >.explain{
+        padding-right: 30px;
+        box-sizing: border-box;
+      >.title{
+        font-size: 28px;
+      }
+      p{
+        margin-top: 15px;
+      }
+      .design-btn{
+        margin-top: 20px;
+        .design-btn-link{
+          display: inline-block;
+          border: 2px solid #FBDD40;
+          color: #FBDD40;
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 58px;
+          padding: 0 28px;
+          border-radius: $borderRadius;
+        }
+      }
+    }
+    >.opus-items{
+      position: relative;
+      width: 340px;
+      cursor: pointer;
+      >.img{
+        height: 186px;
+        background: burlywood;
+        border-radius: $borderRadius10;
+      }
+      >.title{
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 18px;
+      }
+      >.time{
+        margin-top: 10px;
+        color: #6B6F7E;
+      }
+    }
+    >.opus-items::after{
+      content: '';
+      position: absolute;
+      background: $listBackground;
+      right: -20px;
+      top: 20px;
+      left: 20px;
+      z-index: -1;
+      bottom: 0;
+      border-radius: $borderRadius10;
+    }
+    >.opus-items:hover::after{
+      bottom: 0;
+      top: -20px;
+      left: -20px;
+      transition: all .5s ;
+    }
+  }
 }
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.xxx{}
 @keyframes liMove {
   0%{ transform: translateY(-10px);}
   25%{transform: translateY(10px);}
