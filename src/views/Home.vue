@@ -38,6 +38,18 @@
           </div>
         </div>
       </div>
+      <div class="list">
+        <div class="item" v-for="item in listData" :key="item.id">
+          <div class="sign">
+            <i class="iconfont"></i>
+          </div>
+          <h2 class="title ellipsis-1">{{item.title}}</h2>
+          <div class="describe ellipsis-3">{{item.describe}}</div>
+          <div class="btn">
+            <router-link class="toBtn" to="">查看详情</router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </Layout>
 </template>
@@ -50,10 +62,31 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Home extends Vue {
   isSearch = this.$route.meta.isSearch;
   url = ['../../img/icons/myHead.jpg'];
+  listData = [
+    {
+      id:1,
+      title:'对象字面量表示法与 JSON',
+      artUrl:'https://www.yinxiang.com/everhub/note/2586e53f-a66b-4d27-87d6-91330606f89d',
+      describe:'对象字面量表示法和 JavaScript Object Notation（JSON）是不同的。虽然他们看起来相似，不同点有： JSON 只允许"property": value syntax形式的属性',
+    },
+    {
+      id:2,
+      title:'for...of循环和for...in循环之间的区别',
+      artUrl:'https://www.yinxiang.com/everhub/note/841fcf55-85df-476d-a85c-8dd111574c3e',
+      describe:'for of let iterable = [3, 5, 7]; iterable.foo = "hello"; for (let i of iterable) { console.log(i)'
+    },
+    {
+      id:3,
+      title:'yield 是什么，干嘛用的',
+      artUrl:'https://www.yinxiang.com/everhub/note/2f5b673a-7957-4f33-a643-64a6c353a1d6',
+      describe:'yield 是什么？ yield 是 es6 新的关键字，使生成器函数执行暂停。yield 后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的 return 关键字。 yiel'
+    }
+  ]
 }
 </script>
 <style lang="scss" scoped>
 $borderRadius: 4px;
+$borderRadius10: 10px;
 $lineHeight:60px;
 $positionTop: 140;
 $gridGap: 30px;
@@ -122,6 +155,45 @@ $textPadding:20px;
     .headBorder {
       border: 4px solid white;
       border-radius: 50%;
+    }
+  }
+  .list{
+    margin-top: 120px;
+    display: flex;
+    justify-content:space-between;
+    >.item{
+      width: 340px;
+      background: #252830;
+      border-radius: $borderRadius10;
+      padding: 20px;
+      box-sizing: border-box;
+      >.sign{
+        width: 78px;
+        height: 78px;
+        background: #1F2026;
+        border-radius: $borderRadius10;
+        margin-top: -60px;
+      } 
+      >.title{
+        margin-top: 20px;
+        font-size: 28px;
+      }
+      >.describe{
+        margin-top: 15px;
+        line-height: 24px;
+        height: 72px;
+      }
+      >.btn{
+        margin-top: 15px;
+        >.toBtn{
+          background: #444857;
+          padding: 0 26px;
+          display: inline-block;
+          line-height: 48px;
+          font-size: 16px;
+          border-radius: $borderRadius;
+        }
+      }
     }
   }
 }
