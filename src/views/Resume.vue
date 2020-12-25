@@ -76,7 +76,7 @@
         </div>
         <div class="skill-and-like">
           <el-tabs v-model="currentName" >
-            <el-tab-pane label="用户管理" name="first">
+            <el-tab-pane label="技能掌握" name="first">
               <ul class="tabs">
                 <li>
                   <div class="tab-bg ">
@@ -130,7 +130,7 @@
                 </li>
               </ul>
             </el-tab-pane>
-            <el-tab-pane label="配置管理" name="second">
+            <el-tab-pane label="兴趣爱好" name="second">
               <div class="like">
                 <span style="left:100px;top:50px;padding: 6px 14px;font-size:16px">看新闻</span>
                 <span style="left:50px;top:180px;padding: 8px 20px;font-size:24px">逛知乎</span>

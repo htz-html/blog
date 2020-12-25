@@ -59,25 +59,64 @@
             <router-link class="design-btn-link" to=''>站酷个人主页</router-link>
           </div>
         </div>
-        <div style="width:100px">
-          <button @click="btnYiD">动画</button>
-        </div>
-        <transition name="fade">
-          <div class="opus-items" :class="{xxx:show}">
-            <div class="img">
-              <img src=""/>
-            </div>
-            <h2 class="title ellipsis-1">对象字面量表示法与 JSON</h2>
-            <p class="time">2020年10月26日</p>
+        <div class="opus-items" 
+          v-for="(item,index) in opusData" 
+          :key="index"
+          :class="{itemhover}"
+          @mouseover="itemOver"
+          @mouseleave="itemLeave"
+          >
+          <div class="img">
+            <img :src="item.imgUrl"/>
           </div>
-        </transition>
-        
+          <h2 class="title ellipsis-1">{{item.title}}</h2>
+          <p class="time">{{item.time}}</p>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-content">
+          <h2 class="title">参与的企业项目</h2>
+          <p style="color:#76DAFF;text-align: center;margin-top:10px">有公司的项目，也有自己的练习作品</p>
+          <div class="project-items">
+          <el-tabs v-model="currentName" >
+            <el-tab-pane label="公司CRM" name="first">
+              <div class="item-detail">
+                <div class="left">
+                  <div>
+                    <p>1.2020 秋季书单：用阅读</p>
+                    <p>2.2020 秋季书单：用阅读</p>
+                    <p>3.2020 秋季书单：用阅读</p>
+                    <p>4.2020 秋季书单：用阅读</p>
+                  </div>
+                  <div class="tags">
+                    <span>web</span>
+                    <span>一年前</span>
+                    <span>Vue</span>
+                  </div>
+                  <button></button>
+                </div>
+                <div class="right">
+                  <img src="../assets/image/hbn_ls.png" alt="">
+                </div>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="保姆大本营-公众号" name="second">
+            </el-tab-pane>
+            <el-tab-pane label="保姆大本营-PC" name="third">
+            </el-tab-pane>
+            <el-tab-pane label="好邦伲家政-公众号" name="fourth">
+            </el-tab-pane>
+            <el-tab-pane label="好邦伲家政-PC" name="fifth">
+            </el-tab-pane>
+          </el-tabs>
+        </div>
+        </div>
       </div>
     </div>
   </Layout>
 </template>
 <script lang="ts">
-import router from "@/router";
+// import router from "@/router";
 import { Component, Vue } from "vue-property-decorator";
 @Component({
   components:{},
@@ -105,9 +144,25 @@ export default class Home extends Vue {
       describe:'yield 是什么？ yield 是 es6 新的关键字，使生成器函数执行暂停。yield 后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的 return 关键字。 yiel'
     }
   ];
-  show= false;
-  btnYiD(){
-    this.show=true
+  opusData=[
+    {
+      title:'对象字面量表示',
+      time:'2019年05月23日',
+      imgUrl:'https://img.zcool.cn/community/01d7975da168c3a80121b722504733.jpg@260w_195h_1c_1e_1o_100sh.jpg'
+    },
+    {
+      title:'对象字面量表示',
+      time:'2018年03月15日',
+      imgUrl:'https://img.zcool.cn/community/01ffec5c1a1116a80121df905f58cc.jpg@260w_195h_1c_1e_1o_100sh.jpg'
+    }
+  ]
+  itemhover= false;
+  currentName="first";
+  itemOver(){
+    this.itemhover = true;
+  }
+  itemLeave(){
+    this.itemhover = false;
   }
 }
 </script>
@@ -121,6 +176,7 @@ $lookBtn: 44px;
 $bottomHeight:44px;
 $textPadding:20px;
 $listBackground:#252830;
+$designHover:15px;
 .home {
   margin-top: 80px;
   >.content{
@@ -225,9 +281,11 @@ $listBackground:#252830;
     }
   }
   >.design{
-    margin-top: 80px;
+    padding-top: 100px;
     display: flex;
     justify-content: space-between;
+    background: url(../assets/image/Layer2.png) no-repeat;
+    background-position: top -10px left 0px;
     >.explain{
       width: 340px;
       border-radius: $borderRadius10;
@@ -263,6 +321,10 @@ $listBackground:#252830;
         height: 186px;
         background: burlywood;
         border-radius: $borderRadius10;
+        overflow: hidden;
+        img{
+          width: 100%;
+        }
       }
       >.title{
         font-size: 18px;
@@ -274,32 +336,101 @@ $listBackground:#252830;
         color: #6B6F7E;
       }
     }
-    >.opus-items::after{
+    .opus-items::after{
+      transition: all 0.5s ;
       content: '';
       position: absolute;
       background: $listBackground;
-      right: -20px;
-      top: 20px;
-      left: 20px;
+      right: -$designHover;
+      top: $designHover;
+      left: $designHover;
       z-index: -1;
       bottom: 0;
       border-radius: $borderRadius10;
     }
-    >.opus-items:hover::after{
-      bottom: 0;
-      top: -20px;
-      left: -20px;
-      transition: all .5s ;
+    .itemhover:hover::after{
+      top: -$designHover;
+      left: -$designHover;
+    }
+  }
+  .project{
+    margin-top: 100px;
+    .project-content{
+      position: relative;
+      .title{
+        padding-top: 40px;
+        font-size:36px;
+        text-align: center;
+      }
+      .project-items{
+        margin-top: 30px;
+        .item-detail{
+          display: flex;
+          .left{
+            width: 520px;
+            padding-left: 40px;
+          }
+          .right{
+            flex: 1;
+            padding-top: 40px;
+            img{
+              width: 100%;
+              border-radius: $borderRadius10;
+            }
+          }
+        }
+      }
+    }
+    .project-content::after{
+      content:'';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: -100px;
+      background-color: #1F2026;
+      z-index: -1;
+      border-radius: $borderRadius10;
     }
   }
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-.xxx{}
 @keyframes liMove {
   0%{ transform: translateY(-10px);}
   25%{transform: translateY(10px);}
   50%{transform: translateY(0px);}
+}
+</style>
+<style lang="scss">
+.project-items{
+  .el-tabs__nav-wrap::after{
+    width: 0;
+  }
+  .el-tabs__nav{
+    margin: 0 auto;
+    .el-tabs__item{
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      z-index: 1;
+      color: #aaa;
+    }
+  }
+  .el-tabs__active-bar{
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 50px;
+    left: -11px;
+    background-color: #47CF74;
+  }
+  .is-active{
+    color: #fff !important;
+  }
+  .el-tabs__nav-wrap{
+    text-align: center;
+  }
+  .el-tabs__nav-scroll{
+    display: inline-block;
+    overflow: initial;
+  }
 }
 </style>
