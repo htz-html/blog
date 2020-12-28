@@ -4,7 +4,6 @@
     <p style="font-size:14px;color:#444857;margin-top:40px;">发布时间：{{page[0].time}}</p>
     <div class="xxx" v-html="page[0].content"></div>
   </Layout>
-  
 </template>
 
 <script>

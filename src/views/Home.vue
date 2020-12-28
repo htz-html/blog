@@ -1,5 +1,5 @@
 <template>
-  <Layout :isSearch = isSearch>
+  <Layout :isSearch="isSearch">
     <div class="home">
       <div class="content">
         <div class="left">
@@ -41,7 +41,7 @@
       <div class="list">
         <div class="item" v-for="item in listData" :key="item.id">
           <div class="sign">
-            <i class="iconfont"></i>
+            <i class="iconfont" :class="item.type"></i>
           </div>
           <h2 class="title ellipsis-1">{{item.title}}</h2>
           <div class="describe ellipsis-3">{{item.describe}}</div>
@@ -211,18 +211,21 @@ export default class Home extends Vue {
     {
       id:1,
       title:'对象字面量表示法与 JSON',
+      type: "iconvue-yingjian",
       artUrl:'https://www.yinxiang.com/everhub/note/2586e53f-a66b-4d27-87d6-91330606f89d',
       describe:'对象字面量表示法和 JavaScript Object Notation（JSON）是不同的。虽然他们看起来相似，不同点有： JSON 只允许"property": value syntax形式的属性',
     },
     {
       id:2,
       title:'for...of循环和for...in循环之间的区别',
+      type: "iconnote",
       artUrl:'https://www.yinxiang.com/everhub/note/841fcf55-85df-476d-a85c-8dd111574c3e',
       describe:'for of let iterable = [3, 5, 7]; iterable.foo = "hello"; for (let i of iterable) { console.log(i)'
     },
     {
       id:3,
       title:'yield 是什么，干嘛用的',
+      type: "iconplug-in-unit",
       artUrl:'https://www.yinxiang.com/everhub/note/2f5b673a-7957-4f33-a643-64a6c353a1d6',
       describe:'yield 是什么？ yield 是 es6 新的关键字，使生成器函数执行暂停。yield 后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的 return 关键字。 yiel'
     }
@@ -409,6 +412,11 @@ $btnYellow:#FBDD40;
         background: #1F2026;
         border-radius: $borderRadius10;
         margin-top: -60px;
+        line-height: 78px;
+        text-align: center;
+        i{
+          font-size: 50px;
+        }
       } 
       >.title{
         margin-top: 20px;

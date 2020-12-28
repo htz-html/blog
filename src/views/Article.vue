@@ -377,7 +377,7 @@ export default class Home extends Vue {
     }
   ];
   created() {
-    this.list = this.articlesData.slice(0,this.count)
+    this.list = this.articlesData.slice(0,this.count);
   }
   load () {
     this.loading = true;
@@ -388,7 +388,6 @@ export default class Home extends Vue {
       })
       this.count += 2
       this.loading = false
-      console.log(this.list)
     }, 2000)
   }
   goArticleDetail(item: any){
