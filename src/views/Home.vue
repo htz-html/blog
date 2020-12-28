@@ -56,7 +56,7 @@
           <p>我很享受设计中的色彩，勾勒出喜欢的形状，如果你要问我为什么想去做前端？</p>
           <p>是挑战，是乐趣，富满激情的一种突破。设计是形，而代码就是实，把形转换为实。</p>
           <div class="design-btn">
-            <router-link class="design-btn-link" to=''>站酷个人主页</router-link>
+            <a target="_blank" class="design-btn-link" href="https://www.zcool.com.cn/u/13752763" >站酷个人主页</a>
           </div>
         </div>
         <div class="opus-items" 
@@ -76,40 +76,123 @@
       <div class="project">
         <div class="project-content">
           <h2 class="title">参与的企业项目</h2>
-          <p style="color:#76DAFF;text-align: center;margin-top:10px">有公司的项目，也有自己的练习作品</p>
+          <p style="color:#76DAFF;text-align: center;margin:10px 0 20px 0;">有公司的项目，也有自己的练习作品</p>
           <div class="project-items">
-          <el-tabs v-model="currentName" >
-            <el-tab-pane label="公司CRM" name="first">
-              <div class="item-detail">
-                <div class="left">
-                  <div>
-                    <p>1.2020 秋季书单：用阅读</p>
-                    <p>2.2020 秋季书单：用阅读</p>
-                    <p>3.2020 秋季书单：用阅读</p>
-                    <p>4.2020 秋季书单：用阅读</p>
+            <el-tabs v-model="currentName" >
+              <el-tab-pane label="公司CRM" name="first">
+                <div class="item-detail">
+                  <div class="left">
+                    <div class="introduce">
+                      <p>1、{{projectData[0].p1}}</p>
+                      <p>2、{{projectData[0].p2}}</p>
+                      <p>3、{{projectData[0].p3}}</p>
+                      <p v-if="projectData[0].p4">4、{{projectData[0].p4}}</p>
+                    </div>
+                    <div class="tags">
+                      <span>{{projectData[0].tag1}}</span>
+                      <span>{{projectData[0].tag2}}</span>
+                      <span>{{projectData[0].tag3}}</span>
+                      <span v-if="projectData[0].tag4">{{projectData[0].tag4}}</span>
+                    </div>
                   </div>
-                  <div class="tags">
-                    <span>web</span>
-                    <span>一年前</span>
-                    <span>Vue</span>
+                  <div class="right">
+                    <video src="../assets/image/crm.mp4" controls="controls"></video>
                   </div>
-                  <button></button>
                 </div>
-                <div class="right">
-                  <img src="../assets/image/hbn_ls.png" alt="">
+              </el-tab-pane>
+              <el-tab-pane label="保姆大本营-公众号" name="second">
+                <div class="item-detail">
+                  <div class="left">
+                    <div class="introduce">
+                      <p>1、{{projectData[1].p1}}</p>
+                      <p>2、{{projectData[1].p2}}</p>
+                      <p>3、{{projectData[1].p3}}</p>
+                      <p v-if="projectData[1].p4">4、{{projectData[1].p4}}</p>
+                    </div>
+                    <div class="tags">
+                      <span>{{projectData[1].tag1}}</span>
+                      <span>{{projectData[1].tag2}}</span>
+                      <span>{{projectData[1].tag3}}</span>
+                      <span v-if="projectData[1].tag4">{{projectData[1].tag4}}</span>
+                    </div>
+                    <a class="url-btn" href="" >进入线上网站</a>
+                  </div>
+                  <div class="right">
+                    <img src="../assets/image/hbn_ls.png" />
+                  </div>
                 </div>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="保姆大本营-公众号" name="second">
-            </el-tab-pane>
-            <el-tab-pane label="保姆大本营-PC" name="third">
-            </el-tab-pane>
-            <el-tab-pane label="好邦伲家政-公众号" name="fourth">
-            </el-tab-pane>
-            <el-tab-pane label="好邦伲家政-PC" name="fifth">
-            </el-tab-pane>
-          </el-tabs>
-        </div>
+              </el-tab-pane>
+              <el-tab-pane label="保姆大本营-PC" name="third">
+                <div class="item-detail">
+                  <div class="left">
+                    <div class="introduce">
+                      <p>1、{{projectData[2].p1}}</p>
+                      <p>2、{{projectData[2].p2}}</p>
+                      <p>3、{{projectData[2].p3}}</p>
+                      <p v-if="projectData[2].p4">4、{{projectData[2].p4}}</p>
+                    </div>
+                    <div class="tags">
+                      <span>{{projectData[2].tag1}}</span>
+                      <span>{{projectData[2].tag2}}</span>
+                      <span>{{projectData[2].tag3}}</span>
+                      <span v-if="projectData[2].tag4">{{projectData[2].tag4}}</span>
+                    </div>
+                    <a class="url-btn" href="" >进入线上网站</a>
+                  </div>
+                  <div class="right">
+                    <img :src="projectData[2].imgUrl" />
+                    <video v-if="projectData[2].videoUrl" :src="projectData[2].videoUrl"></video>
+                  </div>
+                </div>
+              </el-tab-pane>
+              <el-tab-pane label="好邦伲家政-公众号" name="fourth">
+                <div class="item-detail">
+                  <div class="left">
+                    <div class="introduce">
+                      <p>1、{{projectData[3].p1}}</p>
+                      <p>2、{{projectData[3].p2}}</p>
+                      <p>3、{{projectData[3].p3}}</p>
+                      <p v-if="projectData[3].p4">4、{{projectData[3].p4}}</p>
+                    </div>
+                    <div class="tags">
+                      <span>{{projectData[3].tag1}}</span>
+                      <span>{{projectData[3].tag2}}</span>
+                      <span>{{projectData[3].tag3}}</span>
+                      <span v-if="projectData[3].tag4">{{projectData[3].tag4}}</span>
+                    </div>
+                    <a class="url-btn" href="" >进入线上网站</a>
+                  </div>
+                  <div class="right">
+                    <img :src="projectData[3].imgUrl" />
+                    <video v-if="projectData[3].videoUrl" :src="projectData[3].videoUrl"></video>
+                  </div>
+                </div>
+              </el-tab-pane>
+              <el-tab-pane label="好邦伲家政-PC" name="fifth">
+                <div class="item-detail">
+                  <div class="left">
+                    <div class="introduce">
+                      <p>1、{{projectData[4].p1}}</p>
+                      <p>2、{{projectData[4].p2}}</p>
+                      <p>3、{{projectData[4].p3}}</p>
+                      <p v-if="projectData[4].p4">4、{{projectData[4].p4}}</p>
+                    </div>
+                    <div class="tags">
+                      <span>{{projectData[4].tag1}}</span>
+                      <span>{{projectData[4].tag2}}</span>
+                      <span>{{projectData[4].tag3}}</span>
+                      <span v-if="projectData[4].tag4">{{projectData[4].tag4}}</span>
+                    </div>
+                    <a class="url-btn" href="" >进入线上网站</a>
+                  </div>
+                  <div class="right">
+                    <img :src="projectData[4].imgUrl" />
+                    <video v-if="projectData[4].videoUrl" :src="projectData[4].videoUrl"></video>
+                  </div>
+                </div>
+              </el-tab-pane>
+            </el-tabs>
+          </div>
         </div>
       </div>
     </div>
@@ -158,6 +241,74 @@ export default class Home extends Vue {
   ]
   itemhover= false;
   currentName="first";
+  projectData = [
+    {
+      p1:"2020 秋季书单：用阅读 V8是Google的开源高性能JavaScript和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+      p2:"它实现ECMAScript和WebAssembly，并在Windows 7或更高版本，macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+      p3:"2V8可以独立运行，也可以嵌入到任何C ++应用程序中。",
+      p4:"2020 秋季书单：用阅读",
+      tag1:"CRM",
+      tag2:"一年前",
+      tag3:"Vue",
+      tag4:"其他",
+      btnName:"1",
+      webUrl:"",
+      imgUrl:"../assets/image/sketch.png",
+      videoUrl:""
+    },
+    {
+      p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+      p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+      p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+      tag1:"web",
+      tag2:"一年前",
+      tag3:"Vue",
+      tag4:"",
+      btnName:"1",
+      webUrl:"https://www.haobangni.com/hbnls_PC/",
+      imgUrl:"../image/hbn_ls.png",
+      videoUrl:""
+    },
+    {
+      p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+      p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+      p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+      tag1:"web",
+      tag2:"一年前",
+      tag3:"Vue",
+      tag4:"",
+      btnName:"1",
+      webUrl:"https://www.haobangni.com/hbnls/",
+      imgUrl:"../assets/image/hbn_ls.png",
+      videoUrl:""
+    },
+    {
+      p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+      p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+      p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+      tag1:"web",
+      tag2:"一年前",
+      tag3:"Vue",
+      tag4:"",
+      btnName:"1",
+      webUrl:"https://m.haobangni.com/pc/",
+      imgUrl:"../assets/image/hbn_ls.png",
+      videoUrl:""
+    },
+    {
+      p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+      p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+      p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+      tag1:"公众号",
+      tag2:"半年前",
+      tag3:"BootStrap",
+      tag4:"",
+      btnName:"1",
+      webUrl:"https://bm.haobangni.com/m/",
+      imgUrl:"../assets/image/hbn_ls.png",
+      videoUrl:""
+    }
+  ]
   itemOver(){
     this.itemhover = true;
   }
@@ -177,6 +328,7 @@ $bottomHeight:44px;
 $textPadding:20px;
 $listBackground:#252830;
 $designHover:15px;
+$btnYellow:#FBDD40;
 .home {
   margin-top: 80px;
   >.content{
@@ -355,6 +507,7 @@ $designHover:15px;
   }
   .project{
     margin-top: 100px;
+    padding-bottom: 50px;
     .project-content{
       position: relative;
       .title{
@@ -363,19 +516,49 @@ $designHover:15px;
         text-align: center;
       }
       .project-items{
-        margin-top: 30px;
         .item-detail{
           display: flex;
+          padding-top: 40px;
           .left{
             width: 520px;
-            padding-left: 40px;
+            padding-left: 20px;
+            padding-right: 50px;
+            >.introduce{
+              p{
+                margin-top: 10px;
+                font-size: 16px;
+              }
+            }
+            >.tags{
+              margin-top: 30px;
+              span{
+                padding: 2px 12px;
+                border-radius: 50px;
+                background: #323338;
+                margin-right: 10px;
+              }
+            }
+            .url-btn{
+              display: inline-block;
+              line-height:  58px;
+              padding: 0 44px;
+              color: $btnYellow;
+              border: 2px solid $btnYellow;
+              border-radius: $borderRadius;
+              font-size: 18px;
+              font-weight: bold;
+              margin-top: 50px;
+            }
           }
           .right{
             flex: 1;
-            padding-top: 40px;
+            height: 360px;
+            video{
+              width: 100%;
+            }
             img{
               width: 100%;
-              border-radius: $borderRadius10;
+              border-radius: $borderRadius;
             }
           }
         }
@@ -387,7 +570,7 @@ $designHover:15px;
       top: 0;
       left: 0;
       right: 0;
-      bottom: -100px;
+      bottom: 40px;
       background-color: #1F2026;
       z-index: -1;
       border-radius: $borderRadius10;

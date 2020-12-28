@@ -1,3 +1,4 @@
+// 文章详情
 <script>
 dataArticle = [
   {
@@ -335,6 +336,78 @@ dataArticle = [
     title:'你知道哪些 JS 的库或者框架，他们的作用分别是什么？请至少说出 5 个',
     artUrl:'https://www.yinxiang.com/everhub/note/4d38967e-2429-422c-9a34-6bc7ffae7f76',
     describe:'1.jQuery 2.modulejs modulejs是极致模块化的且面向对象的javascript框架，modulejs能让你在简单易用的前提下写出更佳维护性和可重用性的javascript代码。'
+  }
+]
+</script>
+
+// 企业项目
+<script>
+projectData = [
+  {
+    p1:"2020 秋季书单：用阅读 V8是Google的开源高性能JavaScript和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+    p2:"它实现ECMAScript和WebAssembly，并在Windows 7或更高版本，macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+    p3:"2V8可以独立运行，也可以嵌入到任何C ++应用程序中。",
+    p4:"2020 秋季书单：用阅读",
+    tag1:"CRM",
+    tag2:"一年前",
+    tag3:"Vue",
+    tag4:"其他",
+    btnName:"1",
+    webUrl:"",
+    imgUrl:"../src/assets/image/hbn_ls.png",
+    videoUrl:""
+  },
+  {
+    p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+    p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+    p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+    tag1:"web",
+    tag2:"一年前",
+    tag3:"Vue",
+    tag4:"",
+    btnName:"1",
+    webUrl:"https://www.haobangni.com/hbnls_PC/",
+    imgUrl:"../assets/image/hbn_ls.png",
+    videoUrl:""
+  },
+  {
+    p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+    p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+    p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+    tag1:"web",
+    tag2:"一年前",
+    tag3:"Vue",
+    tag4:"",
+    btnName:"1",
+    webUrl:"https://www.haobangni.com/hbnls/",
+    imgUrl:"../assets/image/hbn_ls.png",
+    videoUrl:""
+  },
+  {
+    p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+    p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+    p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+    tag1:"web",
+    tag2:"一年前",
+    tag3:"Vue",
+    tag4:"",
+    btnName:"1",
+    webUrl:"https://m.haobangni.com/pc/",
+    imgUrl:"../assets/image/hbn_ls.png",
+    videoUrl:""
+  },
+  {
+    p1:"和WebAssembly引擎，用C ++编写。它用于Chrome和Node.js等。",
+    p2:"macOS 10.12+以及使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。",
+    p3:"2V8可以独立运行，也可以嵌入到任何应用程序中。",
+    tag1:"公众号",
+    tag2:"半年前",
+    tag3:"BootStrap",
+    tag4:"",
+    btnName:"1",
+    webUrl:"https://bm.haobangni.com/m/",
+    imgUrl:"../assets/image/hbn_ls.png",
+    videoUrl:""
   }
 ]
 </script>
