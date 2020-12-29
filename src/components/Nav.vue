@@ -12,6 +12,9 @@
     <router-link to="/article" class="item" active-class="selected" >
       <i class="iconfont iconarticleList"></i>
     </router-link> 
+    <router-link to="/webnav" class="item" active-class="selected" >
+      <i class="iconfont iconweb-nav"></i>
+    </router-link> 
     <router-link to="/about" class="item" active-class="selected" >
       <i class="iconfont iconinfo"></i>
     </router-link>

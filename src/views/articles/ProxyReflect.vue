@@ -579,3 +579,219 @@ projectData = [
   }
 ]
 </script>
+
+// 网站导航
+<script>
+webNavData = [
+  {
+    id:1,
+    type: 'design',
+    logoUrl:'',
+    webUrl: 'https://dribbble.com/',
+    describe: '设计师必备的视觉设计'
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: 'https://huaban.com/',
+    describe: '启发设计灵感，国内比较好的'
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: 'https://www.zcool.com.cn/',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: 'https://huaban.com/',
+    describe: '启发设计灵感，国内比较好的'
+  },
+  {
+    id:1,
+    type: 'design',
+    logoUrl:'',
+    webUrl: 'https://www.pakutaso.com/',
+    describe: '免费下载日本流行的照片'
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: 'http://bm.straightline.jp/',
+    describe: '不错的日本设计网站'
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  },
+  {
+    id:2,
+    type: 'design',
+    logoUrl:'',
+    webUrl: '',
+    describe: ''
+  }
+]
+</script>

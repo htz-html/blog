@@ -1,5 +1,61 @@
 <template>
-  <Layout class="detaile">
+  <Layout>
+    <div class="webnav">
+      <div class="list">
+        <div class="title">关于设计</div>
+        <ul>
+          <li>
+            <img src="../assets/image/dribbble.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/huaban.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/zhanku.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/shijue.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/alibaba.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/qiantu.png">
+            <p>免费下载日本流行的照片</p>
+          </li>
+          <li>
+            <img src="../assets/image/shetu.png">
+            <p>启发设计灵感</p>
+          </li>
+        </ul>
+      </div>
+      <div class="list">
+        <div class="title">关于设计</div>
+        <ul>
+          <li>
+            <img src="../assets/image/dribbble.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/huaban.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/zhanku.png">
+            <p>启发设计灵感</p>
+          </li>
+          <li>
+            <img src="../assets/image/shijue.png">
+            <p>启发设计灵感</p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </Layout>
 </template>
 <script>
@@ -9,43 +65,48 @@ import { Component, Vue } from "vue-property-decorator";
   components:{},
 })
 export default class ArticleDetail extends Vue {
-  pageId = null;
-  page = [];
-  created() {
-    this.pageId = +this.$route.query.id;
-    this.page = this.filterData()
-  }
-  filterData(){
-    return this.DetailData.filter(item => item.id === this.pageId)
-  }
-DetailData = [
-
-];
+  
 }
 </script>
-<style lang="scss">
-.pre{
-  border-radius: 10px;
-  background:#252830 !important;
-  font-size:16px;
-}
-
-.code{
-  display: block; overflow-x: auto; 
-  padding: 10px 20px 20px 40px;
-  line-height: 24px;
-}
-.h2{
-  margin-top: 20px;
-  font-size: 28px;
-}
-.danger{
-  color: rgb(255, 43, 142);
-}
-</style>
 <style lang="scss" scoped>
-.detaile{
-  margin-top: 240px;
-  padding-bottom: 50px;
+$borderradius4:4px;
+$borderradius10:10px;
+.webnav{
+  padding-top: 160px;
+  padding-bottom: 50px; 
+  >.list{
+    margin-top: 50px;
+    >.title{
+      font-size: 24px;
+      color: #121417;
+      background: #47CF74;
+      font-weight: bold;
+      padding-left: 20px;
+      line-height: 48px;
+      border-radius: $borderradius4;
+      width: 200px;
+    }
+    >ul{
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      margin-left: -10px;
+      margin-right: -10px;
+      >li{
+        width: 260px;
+        padding: 20px;
+        margin: 10px;
+        background: #1F2026;
+        box-sizing: border-box;
+        border-radius: $borderradius4;
+        >img{
+          height: 32px;
+        }
+        >p{
+          margin-top: 10px;
+        }
+      }
+    }
+  }
 }
 </style>
