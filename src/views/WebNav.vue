@@ -1,15 +1,11 @@
 <template>
   <Layout class="detaile">
-    <h1 style="font-size:60px;font-weight:100;">{{page[0].title}}</h1>
-    <p style="font-size:14px;color:#444857;margin-top:40px;">发布时间：{{page[0].time}}</p>
-    <div class="xxx" v-html="page[0].content"></div>
   </Layout>
 </template>
-
 <script>
 import { Component, Vue } from "vue-property-decorator";
 @Component({
-  name:"ArticleDetail",
+  name:"WebNav",
   components:{},
 })
 export default class ArticleDetail extends Vue {

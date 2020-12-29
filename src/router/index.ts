@@ -32,9 +32,9 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/About.vue')
   },
   {
-    path: '/pagedetail',
-    name: 'pagedetail',
-    component: () => import('@/views/ArticleDetail.vue')
+    path: '/webnav',
+    name: 'WebNav',
+    component: () => import('@/views/WebNav.vue')
   },
   {
     path: '*',
