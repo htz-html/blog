@@ -18,13 +18,17 @@
     </div>
   </div>
 </template>
-
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 @Component({})
 export default class Search extends Vue {
   restaurants=[{}];
   state="";
+  dataArticle = []
+  created() {
+    this.dataArticle = this.$store.state.dataArticle;
+    this.loadAll()
+  }
   querySearch(queryString: any, cb: any) {
     const restaurants = this.restaurants;
     const results = queryString
@@ -33,71 +37,26 @@ export default class Search extends Vue {
       // 调用 callback 返回建议列表的数据
     cb(results);
   }
-  createFilter(queryString: any) {
+  createFilter(queryString: string) {
     return (restaurant: any) => {
       return (
-        restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) ===
-          0
+        restaurant.value.toLowerCase().indexOf(queryString.toLowerCase())>=0
       );
     };
   }
   loadAll() {
-    return [
-      { value: "" },
-    ];
+    this.dataArticle.forEach((item: any) =>{
+      const newObject = {value:'', url: ''};
+      newObject.value = item.title;
+      newObject.url = item.artUrl;
+      this.restaurants.push(newObject);
+    });
+    this.restaurants.shift()
   }
   handleSelect(item: any) {
-    console.log(item);
-  }
-  handleIconClick(ev: any) {
-    console.log(ev);
-  }
-  mounted() {
-    this.restaurants = this.loadAll();
+    window.open(item.url)
   }
 }
-// export default {
-//   props:["searchData"],
-//   data() {
-//     return {
-//       restaurants: [],
-//       state: "",
-//     };
-//   },
-//   methods: {
-//     querySearch(queryString, cb) {
-//       const restaurants = this.restaurants;
-//       const results = queryString
-//         ? restaurants.filter(this.createFilter(queryString))
-//         : restaurants;
-//       // 调用 callback 返回建议列表的数据
-//       cb(results);
-//     },
-//     createFilter(queryString) {
-//       return (restaurant) => {
-//         return (
-//           restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) ===
-//           0
-//         );
-//       };
-//     },
-//     loadAll() {
-//       return [
-//         { value: "" },
-//       ];
-//     },
-//     handleSelect(item) {
-//       console.log(item);
-//     },
-//     handleIconClick(ev) {
-//       console.log(ev);
-//     },
-//   },
-//   mounted() {
-//     this.restaurants = this.loadAll();
-//     console.log(this.searchData)
-//   },
-// };
 </script>
 <style lang="scss" >
 $searchFontS:500;

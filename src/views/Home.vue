@@ -199,7 +199,6 @@
   </Layout>
 </template>
 <script lang="ts">
-// import router from "@/router";
 import { Component, Vue } from "vue-property-decorator";
 @Component({
   components:{},
@@ -312,6 +311,7 @@ export default class Home extends Vue {
       videoUrl:""
     }
   ]
+  searchValue = []
   itemOver(){
     this.itemhover = true;
   }

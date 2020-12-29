@@ -21,7 +21,10 @@ const routes: Array<RouteConfig> = [
   {
     path: '/article',
     name: 'Article',
-    component: () => import('@/views/Article.vue')
+    component: () => import('@/views/Article.vue'),
+    meta:{
+      isSearch: true
+    }
   },
   {
     path: '/about',
