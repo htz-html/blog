@@ -35,6 +35,7 @@ ul{
     background: #1F2026;
     box-sizing: border-box;
     border-radius: $borderradius4;
+    transition: all .3s;
     >img{
       height: 32px;
     }

@@ -101,6 +101,9 @@ $inpBtn:18px;
       font-weight: $searchFontS;
       border-radius: $borderRadius;
     }
+    > button:hover{
+      background: #3cb363;
+    }
   }
 }
 </style>

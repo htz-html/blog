@@ -254,14 +254,14 @@ export default class ArticleDetail extends Vue {
 $borderradius4:4px;
 $borderradius10:10px;
 .webnav{
-  padding-top: 160px;
+  padding-top: 100px;
   padding-bottom: 50px; 
   >.list{
     margin-top: 50px;
     >.title{
       font-size: 24px;
       color: #121417;
-      background: #47CF74;
+      background: #bcd6c5;
       font-weight: bold;
       padding-left: 20px;
       line-height: 48px;

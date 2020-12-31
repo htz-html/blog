@@ -32,9 +32,25 @@
         </div>
         <div class="right">
           <div class="right-box">
-            <div class="o1"></div>
-            <div class="o2"></div>
-            <div class="o3"></div>
+            <div class="o1">
+              <h4 class="share delay"><span style="color:#FBDD40;">2018年10月27日</span></h4>
+              <p class="share delay" style="animation-delay:3s;">
+                第一次带爸妈去<span style="color:#FB8140;">北京旅游</span>，他们脸上的露
+              </p>
+              <p class="share delay" style="animation-delay:8s;">
+                出的不只是开心，哈哈，感觉自己终于做
+              </p>
+              <p class="share delay" style="animation-delay:13s;">对了一件事。</p>
+            </div>
+            <div class="o2" @click="gotoBeijing">
+              <img src="https://img.zcool.cn/community/0106ca5bed3896a80121ab5d2356b6.png" width="120px" style="border-radius:4px;margin-right:14px">
+              <img src="https://img.zcool.cn/community/010eef5bed386fa80121ab5df4cee2.png" width="120px" style="border-radius:4px;">
+              <p style="padding-top:10px">记录生活 </p>
+            </div>
+            <div class="o3">
+              <p style="color:#47CF74;">嗯，是啊。嘿嘿</p>
+              <p style="color:#47CF74;">我来自湖北恩施啊😊，你呢...</p>
+            </div>
           </div>
         </div>
       </div>
@@ -96,11 +112,11 @@
                     </div>
                   </div>
                   <div class="right">
-                    <video src="../assets/image/crm.mp4" controls="controls"></video>
+                    <img src="../assets/image/170720.png">
                   </div>
                 </div>
               </el-tab-pane>
-              <el-tab-pane label="保姆大本营-公众号" name="second">
+              <el-tab-pane label="好邦伲-公众号" name="second">
                 <div class="item-detail">
                   <div class="left">
                     <div class="introduce">
@@ -115,14 +131,13 @@
                       <span>{{projectData[1].tag3}}</span>
                       <span v-if="projectData[1].tag4">{{projectData[1].tag4}}</span>
                     </div>
-                    <a class="url-btn" href="" >进入线上网站</a>
                   </div>
                   <div class="right">
-                    <img src="../assets/image/hbn_ls.png" />
+                    <img src="../assets/image/171216.png" style="width:300px">
                   </div>
                 </div>
               </el-tab-pane>
-              <el-tab-pane label="保姆大本营-PC" name="third">
+              <el-tab-pane label="好邦伲家官网" name="third">
                 <div class="item-detail">
                   <div class="left">
                     <div class="introduce">
@@ -137,15 +152,14 @@
                       <span>{{projectData[2].tag3}}</span>
                       <span v-if="projectData[2].tag4">{{projectData[2].tag4}}</span>
                     </div>
-                    <a class="url-btn" href="" >进入线上网站</a>
+                    <a class="url-btn" href="https://www.haobangni.com/hbnls_PC/#/">进入线上网站</a>
                   </div>
                   <div class="right">
-                    <img :src="projectData[2].imgUrl" />
-                    <video v-if="projectData[2].videoUrl" :src="projectData[2].videoUrl"></video>
+                    <img src="../assets/image/hbncom.png">
                   </div>
                 </div>
               </el-tab-pane>
-              <el-tab-pane label="好邦伲家政-公众号" name="fourth">
+              <el-tab-pane label="好邦伲家政O2O" name="fourth">
                 <div class="item-detail">
                   <div class="left">
                     <div class="introduce">
@@ -160,15 +174,14 @@
                       <span>{{projectData[3].tag3}}</span>
                       <span v-if="projectData[3].tag4">{{projectData[3].tag4}}</span>
                     </div>
-                    <a class="url-btn" href="" >进入线上网站</a>
+                    <a class="url-btn" href="http://m1.haobangni.com/pc/" >进入线上网站</a>
                   </div>
                   <div class="right">
-                    <img :src="projectData[3].imgUrl" />
-                    <video v-if="projectData[3].videoUrl" :src="projectData[3].videoUrl"></video>
+                    <img src="../assets/image/hbnjzw.png">
                   </div>
                 </div>
               </el-tab-pane>
-              <el-tab-pane label="好邦伲家政-PC" name="fifth">
+              <el-tab-pane label="保姆大本营-PC" name="fifth">
                 <div class="item-detail">
                   <div class="left">
                     <div class="introduce">
@@ -183,11 +196,32 @@
                       <span>{{projectData[4].tag3}}</span>
                       <span v-if="projectData[4].tag4">{{projectData[4].tag4}}</span>
                     </div>
-                    <a class="url-btn" href="" >进入线上网站</a>
+                    <a class="url-btn" href="https://bm.haobangni.com/" >进入线上网站</a>
                   </div>
                   <div class="right">
-                    <img :src="projectData[4].imgUrl" />
-                    <video v-if="projectData[4].videoUrl" :src="projectData[4].videoUrl"></video>
+                    <img src="../assets/image/bmdby.png">
+                  </div>
+                </div>
+              </el-tab-pane>
+              <el-tab-pane label="保姆大本营-手机版" name="sixth">
+                <div class="item-detail">
+                  <div class="left">
+                    <div class="introduce">
+                      <p>1、{{projectData[4].p1}}</p>
+                      <p>2、{{projectData[4].p2}}</p>
+                      <p>3、{{projectData[4].p3}}</p>
+                      <p v-if="projectData[4].p4">4、{{projectData[4].p4}}</p>
+                    </div>
+                    <div class="tags">
+                      <span>{{projectData[4].tag1}}</span>
+                      <span>{{projectData[4].tag2}}</span>
+                      <span>{{projectData[4].tag3}}</span>
+                      <span v-if="projectData[4].tag4">{{projectData[4].tag4}}</span>
+                    </div>
+                    <a class="url-btn" href="https://bm.haobangni.com/" >进入线上网站</a>
+                  </div>
+                  <div class="right">
+                    <img src="../assets/image/bmgzh.png" style="width:300px">
                   </div>
                 </div>
               </el-tab-pane>
@@ -199,7 +233,7 @@
   </Layout>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from 'vue-property-decorator';
 @Component({
   components:{},
 })
@@ -318,6 +352,9 @@ export default class Home extends Vue {
   itemLeave(){
     this.itemhover = false;
   }
+  gotoBeijing(){
+    window.open('https://www.zcool.com.cn/article/ZODE2ODYw.html')
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -332,6 +369,7 @@ $textPadding:20px;
 $listBackground:#252830;
 $designHover:15px;
 $btnYellow:#FBDD40;
+$boxshadow: rgb(202, 255, 153);
 .home {
   margin-top: 80px;
   >.content{
@@ -360,6 +398,9 @@ $btnYellow:#FBDD40;
           border-radius: $borderRadius;
           font-weight:700;
         }
+        .mybtn:hover{
+          background: #3cb363;
+        }
       }
     }
     >.right{
@@ -376,10 +417,19 @@ $btnYellow:#FBDD40;
           height: $positionTop + px;
           background: #1A1A1A;
           border-radius: $borderRadius;
+          transition: all .3s;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+        >.o1:hover,.o2:hover,.o3:hover{
+          box-shadow: 0 0 10px $boxshadow;
         }
         > .o1 {
-          top: -(18+(0 * $positionTop))+ px;
-          right: -20px;
+            top: -(18+(0 * $positionTop))+ px;
+            right: -20px;
+            h4{
+              margin-bottom: 10px;
+            }
         }
         > .o2 {
           top: ($positionTop - 7)+px;
@@ -388,6 +438,16 @@ $btnYellow:#FBDD40;
         > .o3 {
           top: ($positionTop * 2 + 5)+px;
           right: 0px;
+        }
+        .share{
+          width:0;
+          white-space:nowrap;
+          overflow:hidden;
+          line-height: 24px;
+          &.delay{
+            font-size: 14px;
+            animation: type 5s steps(50, end) forwards;
+          }
         }
       }
     }
@@ -406,6 +466,7 @@ $btnYellow:#FBDD40;
       border-radius: $borderRadius10;
       padding: 20px;
       box-sizing: border-box;
+      transition: all .3s;
       >.sign{
         width: 78px;
         height: 78px;
@@ -436,9 +497,20 @@ $btnYellow:#FBDD40;
           line-height: 48px;
           font-size: 16px;
           border-radius: $borderRadius;
+          transition: all .3s;
+        }
+        >.toBtn:hover{
+          background: #20232b;
         }
       }
     }
+    >.item:hover{
+      background: #323641;
+      .sign{
+        box-shadow: 0 3px 10px $boxshadow;
+      }
+    }
+
   }
   >.design{
     padding-top: 100px;
@@ -470,6 +542,9 @@ $btnYellow:#FBDD40;
           line-height: 58px;
           padding: 0 28px;
           border-radius: $borderRadius;
+        }
+        .design-btn-link:hover{
+          background: #fbdc402d;
         }
       }
     }
@@ -513,7 +588,7 @@ $btnYellow:#FBDD40;
       left: -$designHover;
     }
   }
-  .project{
+  >.project{
     margin-top: 100px;
     padding-bottom: 50px;
     .project-content{
@@ -528,7 +603,7 @@ $btnYellow:#FBDD40;
           display: flex;
           padding-top: 40px;
           .left{
-            width: 520px;
+            width: 400px;
             padding-left: 20px;
             padding-right: 50px;
             >.introduce{
@@ -548,22 +623,24 @@ $btnYellow:#FBDD40;
             }
             .url-btn{
               display: inline-block;
-              line-height:  58px;
-              padding: 0 44px;
-              color: $btnYellow;
-              border: 2px solid $btnYellow;
-              border-radius: $borderRadius;
-              font-size: 18px;
-              font-weight: bold;
+              line-height:  40px;
+              padding: 0 30px;
+              color: rgb(253, 253, 253);
+              border: 1px solid $btnYellow;
+              border-radius: 100px;
+              font-size: 16px;
               margin-top: 50px;
+              transition: all .2s;
+            }
+            .url-btn:hover{
+              background: $btnYellow;
+              color: #333;
             }
           }
           .right{
             flex: 1;
-            height: 360px;
-            video{
-              width: 100%;
-            }
+            text-align: center;
+            border-radius: 10px;
             img{
               width: 100%;
               border-radius: $borderRadius;
@@ -571,6 +648,9 @@ $btnYellow:#FBDD40;
           }
         }
       }
+    }
+    .project-content:hover::after{
+      background-color: #24252c;
     }
     .project-content::after{
       content:'';
@@ -582,6 +662,7 @@ $btnYellow:#FBDD40;
       background-color: #1F2026;
       z-index: -1;
       border-radius: $borderRadius10;
+      transition: all .3s;
     }
   }
 }
@@ -589,6 +670,9 @@ $btnYellow:#FBDD40;
   0%{ transform: translateY(-10px);}
   25%{transform: translateY(10px);}
   50%{transform: translateY(0px);}
+}
+@keyframes type{
+    to { width: 296px;}
 }
 </style>
 <style lang="scss">
