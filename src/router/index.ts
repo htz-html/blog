@@ -37,6 +37,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/WebNav.vue')
   },
   {
+    path: '/resume2',
+    name: 'Resume2',
+    component: () => import('@/views/Resume2.vue')
+  },
+  {
     path: '*',
     component: () => import('@/views/NotFound.vue')
   }

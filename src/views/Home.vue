@@ -239,7 +239,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 })
 export default class Home extends Vue {
   isSearch = this.$route.meta.isSearch;
-  url = ['../../img/icons/myHead.jpg'];
+  url = [require('../assets/image/myHead.jpg')];
   listData = [
     {
       id:1,

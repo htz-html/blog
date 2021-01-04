@@ -8,7 +8,7 @@
           <div class="signal"><i class="iconfont icondianliang"></i></div>
         </div>
         <div class="title">
-          <h1>Hey，你好！</h1>
+          <h1 class="flex-start">Hey，你好！<router-link to='/resume' class="abtn">普通版</router-link></h1>
           <p>
             很神奇吧，冥冥之中有一种力量让您看见我的简历。特别感谢您来到这里！
           </p>
@@ -26,53 +26,42 @@
               <i class="el-icon-picture-outline"></i>
             </div>
             </el-image>
-            <h1>陆杨清</h1>
-          </div>
-          <div class="info1 flex-start">
-            <p v-for="(item,index) in baseInfo" :key="index">
-              <i class="iconfont" :class="item.iconName"></i><span>{{item.name}}</span>
-            </p>
-          </div>
-          <BaseInfo :baseInfo2="baseInfo2"></BaseInfo>
-        </div>
-        <div class="job-wanted">
-          <div class="left">
-            <p class="title">求职期望</p>
-            <div class="content">
-              <span>Vue前端开发工程师</span>
-              <span>行业不限</span>
+            <div class="my-info">
+              <h2>陆杨清</h2>
+              <div class="info1 flex-start">
+                <p v-for="(item,index) in baseInfo" :key="index">
+                  <i class="iconfont" :class="item.iconName"></i><span>{{item.name}}</span>
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="right">
-            <p>7-8K</p>
           </div>
         </div>
         <div class="skill-introduce">
-          <p>1、熟悉iOS和Android的界面设计规范；</p>
-          <p>2、熟悉PS, AI, Axure, VScode, XMind等软件；</p>
-          <p>3、熟练BootStrap前端开发，熟悉Vue框架；</p>
-          <p>4、熟悉 <span>HTML, CSS, JS, Vue，Promise, Axios</span> 等；</p>
-          <p>5、项目经验：好邦伲公司微信公众号、官网、CRM后台、保姆/月嫂网站、保姆查询系统。参与更多项目等等等等。</p>
+          <h2>技能掌握</h2>
+          <div class="content">
+            <p>1、熟悉iOS和Android的界面设计规范；</p>
+            <p>2、熟悉PS, AI, Axure, VScode, XMind等软件；</p>
+            <p>3、熟练BootStrap前端开发，熟悉Vue框架；</p>
+            <p>4、熟悉 <span>HTML, CSS, JS, Vue，Promise, Axios</span> 等；</p>
+            <p>5、项目经验：好邦伲公司微信公众号、官网、CRM后台、保姆/月嫂网站、保姆查询系统。参与更多项目等等等等。</p>
+          </div>
         </div>
         <div class="work-experience">
-          <el-collapse v-model="activeName" accordion>
-            <el-collapse-item 
-              v-for="item in works" 
-              :key="item.name" 
-              :name="item.name">
-              <template slot="title">
-                <div>
-                  <p>{{item.title}}</p>
-                <p style="font-size:20px">2017.04 - 2021.01</p>
-                </div>
-              </template>
-              <div v-if="item.p1">1、{{item.p1}}</div>
-              <div v-if="item.p2">2、{{item.p2}}</div>
-              <div v-if="item.p3">3、{{item.p3}}</div>
-              <div v-if="item.p4">4、{{item.p4}}</div>
-              <div v-if="item.p5">5、{{item.p5}}</div>
-            </el-collapse-item>
-          </el-collapse>
+          <h2>工作经验</h2>
+          <div class="content" v-for="(item,index) in works" :key="index+Math.random()">
+            <div class="time">{{item.time}}</div>
+            <div class="name">
+              <span>{{item.title}}</span>
+              <span>{{item.worktype}}</span>
+            </div>
+            <div class="info">
+              <p v-if="item.p1">1、{{item.p1}}</p>
+              <p v-if="item.p2">2、{{item.p2}}</p>
+              <p v-if="item.p3">3、{{item.p3}}</p>
+              <p v-if="item.p4">4、{{item.p4}}</p>
+              <p v-if="item.p5">5、{{item.p5}}</p>
+            </div>
+          </div>
         </div>
         <div class="skill-and-like">
           <el-tabs v-model="currentName" >
@@ -156,29 +145,23 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import BaseInfo from '../components/BaseInfo.vue';
 
 @Component({
-  components:{BaseInfo}
+  components:{}
 })
 export default class Resume extends Vue {
-  url = ['../../img/icons/myHead.jpg'];
+  url = [require('../assets/image/myHead.jpg')];
   baseInfo=[
-    {name:"前端1年经验", iconName:"iconexperience"},
-    {name:"大专", iconName:"iconeducation"},
-    {name:"30岁", iconName:"iconbirthday"}
-  ];
-  baseInfo2 = [
-    {placement: "bottom-start", title:"Tel", content: "18671867438", iconName:"iconphone"},
-    {placement: "bottom", title:"Mail", content: "1006676722@qq.com", iconName:"iconmailbox"},
-    {placement: "bottom", title:"Address", content: "湖北恩施", iconName:"iconaddress"},
-    {placement: "bottom-end", title:"School", content: "湖北民族学院科技学院", iconName:"iconschool"}
+    {name:"大专-计算机应用", iconName:"iconexperience"},
+    {name:"湖北恩施", iconName:"iconeducation"},
+    {name:"18671867439", iconName:"iconbirthday"},
+    {name:"1006676722@qq.com", iconName:"iconbirthday"}
   ];
   activeName=["1"];
   skillLike="first";
   works=[
-    {title:"厦门好邦伲家政服务有限公司", name:"1",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
-    {title:"逛逛网(厦门)有限公司", name:"2",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+    {title:"厦门好邦伲家政服务有限公司",worktype:"前端工程师", time:"2017.04 - 2021.01",p1:"设计网页+公众号+小程序+App；",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+    {title:"逛逛网(厦门)有限公司", worktype:"前端工程师", time:"2017.04 - 2021.01",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
   ];
   currentName = "first";
 }
@@ -187,17 +170,19 @@ export default class Resume extends Vue {
 $boxRadius:60px;
 $lineHeight:96px;
 $infoRadius:30px;
-$infoPadding: 40px;
+$infoPadding: 30px;
 $fontSize24: 24px;
+$fontSize18: 18px;
 $fontSize30: 30px;
 $itemBackGround:#2C2E37;
 $borderCircle: 100px;
 $border50: 50%;
 $spanHeight:46px;
 $dividerBack:#1F2026;
-$boxMarginTop:50px;
+$boxMarginTop:40px;
+$boxMarginTop20:20px;
 .resume-box {
-  margin-top: 240px;
+  margin-top: 200px;
   border-radius: $boxRadius;
   background: #181b1f;
 }
@@ -233,9 +218,16 @@ $boxMarginTop:50px;
     }
   }
   > .title {
-    margin-top: 90px;
+    margin-top: 70px;
     h1 {
       font-size: $fontSize30;
+      .abtn{
+        color: $dividerBack;
+        font-size: 12px;
+        background: #FBDD40;
+        padding: 1px 5px;
+        border-radius: 4px;
+      }
     }
     p {
       width: 470px;
@@ -246,72 +238,38 @@ $boxMarginTop:50px;
   }
   .base-info{
     margin-top: 50px;
-    background: $itemBackGround;
+    background: #293C43;
     border-radius: $infoRadius;
-    padding: $infoPadding;
+    padding: $infoPadding 30px;
     .head{
       .headBorder {
         border: 4px solid white;
         border-radius: 50%;
       }
-      >h1{
+      >.my-info{
         display: inline-block;
         margin-left: 20px;
-        font-size: 44px;
-      }
-    }
-    .info1{
-      margin-top: 30px;
-      p{
-        margin-right: 60px;
-        span{
-          padding-left: 10px;
+        font-size: 18px;
+        h2{
+          font-size: 30px;
+        }
+        .info1{
+          margin-top: 10px;
+          p{
+            margin-right: 30px;
+            span{
+              padding-left: 5px;
+            }
+          }
         }
       }
-      p,p i{
-        font-size: 28px;
-        font-weight: bold;
-      }
     }
-  }
-  .job-wanted{
-    font-weight: bold;
-    margin-top: $boxMarginTop;
-    display: flex;
-    justify-content: space-between;
-    >.left{
-      padding: 10px 0;
-    }
-    >.left>.title{
-      font-size: $fontSize24;
-    }
-    >.left>.content{
-      margin-top: 10px;
-      span{
-        font-size: $fontSize30;
-        margin-right: 30px;
-      }
-    }
-    .right{
-      p{
-        width: 200px;
-        background: #FBDD40;
-        font-size: $fontSize30;
-        color: #121417;
-        text-align: center;
-        border-radius: $infoRadius;
-        padding: 28px 0;
-      }
-    }
+    
   }
   .skill-introduce{
-    margin-top: $boxMarginTop;
-    background: #00369D;
-    padding: $infoPadding;
-    border-radius: $infoRadius;
     p{
-      font-size: $fontSize24;
-      line-height: 36px;
+      font-size: $fontSize18;
+      line-height: 30px;
       color: #ddd;
       span{
         color: #FBDD40;
@@ -322,8 +280,44 @@ $boxMarginTop:50px;
       margin-bottom: 20px;
     }
   }
+  .work-experience,.skill-introduce{
+    >h2{
+      font-size: 30px;
+      margin-top: $boxMarginTop;
+    }
+    >.content{
+      margin-top: $boxMarginTop20;
+      background: #232A34;
+      padding: $infoPadding;
+      border-radius: $infoRadius;
+    }
+  }
   .work-experience{
     margin-top: $boxMarginTop;
+    >.content{
+      >.time{
+        font-size: 16px;
+        color: #FBDD40;
+      }
+      >.name{
+        font-size: 18px;
+        color: #FBDD40;
+        margin-top: 10px;
+        span{
+          margin-right: 70px;
+          font-weight: bold;
+        }
+      }
+      >.info{
+        margin-top: 30px;
+        >p{
+          color: #fff;
+          font-size: 16px;
+          line-height: 26px;
+          margin-top: 20px;
+        }
+      }
+    }
   }
   .skill-and-like{
     margin-top: $boxMarginTop;
@@ -413,30 +407,6 @@ $boxMarginTop:50px;
 }
 </style>
 <style lang="scss">
-.work-experience{
-  .el-collapse-item__header,.el-collapse-item__wrap{
-    background: #2C2E37;
-  }
-  .el-collapse,.el-collapse-item__header,.el-collapse-item__wrap{
-    border:none;
-  }
-  .el-collapse-item{
-    margin-top: 20px;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-  .el-collapse-item__header{
-    color: #fff;
-    font-size: 30px;
-    padding: 30px 40px;
-    height: auto;
-  }
-  .el-collapse-item__content{
-    color: #fff;
-    padding: 0 40px 40px;
-    font-size: 20px;
-  }
-}
 .skill-and-like{
   .el-tabs__nav-wrap::after{
     width: 0;

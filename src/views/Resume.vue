@@ -1,475 +1,384 @@
 <template>
   <Layout>
-    <div class="resume-box">
-      <div class="resume">
-        <div class="status">
-          <div class="time">13:14</div>
-          <div class="bangs"></div>
-          <div class="signal"><i class="iconfont icondianliang"></i></div>
-        </div>
-        <div class="title">
-          <h1>Hey，你好！</h1>
-          <p>
-            很神奇吧，冥冥之中有一种力量让您看见我的简历。特别感谢您来到这里！
-          </p>
+    <div class="resume">
+      <div class="left">
+        <div class="head">
+          <div style="margin-bottom:20px;"><router-link to='/resume2' class="abtn">跳转设计版</router-link></div>
+          <el-image
+          style="width: 150px; height: 180px"
+          :src="url"
+          fit="cover"></el-image>
+          <h1>陆杨清</h1>
+          <p>求职意向：前端工程师</p>
         </div>
         <div class="base-info">
-          <div class="head flex-start">
-            <el-image
-              class="headBorder"
-              style="width: 100px; height: 100px;"
-              :src="url[0]"
-              fit="cover"
-              :preview-src-list="url"
-            >
-            <div slot="error" class="image-slot">
-              <i class="el-icon-picture-outline"></i>
-            </div>
-            </el-image>
-            <h1>陆杨清</h1>
-          </div>
-          <div class="info1 flex-start">
-            <p v-for="(item,index) in baseInfo" :key="index">
+          <h3>基本信息</h3>
+          <ul>
+            <li v-for="(item,index) in baseInfo" :key="index">
               <i class="iconfont" :class="item.iconName"></i><span>{{item.name}}</span>
-            </p>
-          </div>
-          <BaseInfo :baseInfo2="baseInfo2"></BaseInfo>
+            </li>
+          </ul>
         </div>
-        <div class="job-wanted">
-          <div class="left">
-            <p class="title">求职期望</p>
-            <div class="content">
-              <span>Vue前端开发工程师</span>
-              <span>行业不限</span>
+        <div class="my-like">
+          <h3>兴趣爱好</h3>
+          <p>篮球、乒乓球、知乎、新闻等</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="my-skill">
+          <div class="title flex-start">
+            <i class="iconfont iconweb"></i>
+            <span>技能掌握</span>
+          </div>
+          <div class="content">
+            <p>1、熟悉HTML, CSS, JS, Vue，Promise, <span>AxiosPromise</span>, AxiosPromise, Axios，你好，我是你的小可</p>
+            <p>2、熟悉HTML, CSS, JS, Vue，Promise, Axios</p>
+            <p>3、熟悉HTML, CSS, JS, Vue，Promise, Axios</p>
+            <p>4、熟悉HTML, CSS, JS, Vue，Promise, Axios</p>
+          </div>
+        </div>
+        <div class="my-work-experience">
+          <div class="title flex-start">
+            <i class="iconfont iconexperience"></i>
+            <span>工作经历</span>
+          </div>
+          <div class="content">
+            <div class="info" v-for="(item,index) in works" :key="index">
+              <span class="time">{{item.time}}</span>
+              <div class="company"><span>{{item.company}}</span><span>{{item.worktype}}</span></div>
+              <div class="introduce">
+                <p v-if="item.p1">1、{{item.p1}}。</p>
+                <p v-if="item.p2">2、{{item.p2}}。</p>
+                <p v-if="item.p3">3、{{item.p3}}。</p>
+                <p v-if="item.p4">4、{{item.p4}}。</p>
+                <p v-if="item.p5">5、{{item.p5}}。</p>
+              </div>
             </div>
           </div>
-          <div class="right">
-            <p>7-8K</p>
+        </div>
+        <div class="my-work-experience">
+          <div class="title flex-start">
+            <i class="iconfont iconitem"></i>
+            <span>项目经验</span>
+          </div>
+          <div class="content">
+            <div class="info" v-for="(item,index) in items" :key="index">
+              <span class="time">项目时间：{{item.itemTime}}</span>
+              <div class="company"><span>项目名称：{{item.itemName}}</span><span v-if="item.itemTool">项目工具：{{item.itemTool}}</span></div>
+              <div class="duty">{{item.itemInfo}}</div>
+              <div class="introduce">
+                <p>我的职责：</p>
+                <p v-if="item.p1">1、{{item.p1}}。</p>
+                <p v-if="item.p2">2、{{item.p2}}。</p>
+                <p v-if="item.p3">3、{{item.p3}}。</p>
+                <p v-if="item.p4">4、{{item.p4}}。</p>
+                <p v-if="item.p5">5、{{item.p5}}。</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="skill-introduce">
-          <p>1、熟悉iOS和Android的界面设计规范；</p>
-          <p>2、熟悉PS, AI, Axure, VScode, XMind等软件；</p>
-          <p>3、熟练BootStrap前端开发，熟悉Vue框架；</p>
-          <p>4、熟悉 <span>HTML, CSS, JS, Vue，Promise, Axios</span> 等；</p>
-          <p>5、项目经验：好邦伲公司微信公众号、官网、CRM后台、保姆/月嫂网站、保姆查询系统。参与更多项目等等等等。</p>
-        </div>
-        <div class="work-experience">
-          <el-collapse v-model="activeName" accordion>
-            <el-collapse-item 
-              v-for="item in works" 
-              :key="item.name" 
-              :name="item.name">
-              <template slot="title">
-                <div>
-                  <p>{{item.title}}</p>
-                <p style="font-size:20px">2017.04 - 2021.01</p>
+        <div class="my-other-skill">
+          <div class="title flex-start">
+            <i class="iconfont icondesign"></i>
+            <span>其他技能</span>
+          </div>
+          <div class="content">
+            <ul class="tabs">
+              <li>
+                <div class="tab-bg bg">
+                  <div class="design ps">Ps</div>
                 </div>
-              </template>
-              <div v-if="item.p1">1、{{item.p1}}</div>
-              <div v-if="item.p2">2、{{item.p2}}</div>
-              <div v-if="item.p3">3、{{item.p3}}</div>
-              <div v-if="item.p4">4、{{item.p4}}</div>
-              <div v-if="item.p5">5、{{item.p5}}</div>
-            </el-collapse-item>
-          </el-collapse>
-        </div>
-        <div class="skill-and-like">
-          <el-tabs v-model="currentName" >
-            <el-tab-pane label="技能掌握" name="first">
-              <ul class="tabs">
-                <li>
-                  <div class="tab-bg ">
-                    <img src="https://cn.vuejs.org/images/logo.png">
-                  </div>
-                  <p>Vue.js</p>
-                </li>
-                <li>
-                  <div class="tab-bg ">
-                    <div class="text">H/C</div>
-                  </div>
-                  <p>HTML/CSS</p>
-                </li>
-                <li>
-                  <div class="tab-bg">
-                    <div class="text">JS</div>
-                  </div>
-                  <p>JavaScript</p>
-                </li>
-              </ul>
-              <ul class="tabs">
-                <li>
-                  <div class="tab-bg bg">
-                    <div class="design ps">Ps</div>
-                  </div>
-                  <p>Photoshop</p>
-                </li>
-                <li>
-                  <div class="tab-bg bg">
-                    <div class="design ai">Ai</div>
-                  </div>
-                  <p>Illustrator</p>
-                </li>
-                <li>
-                  <div class="tab-bg bg">
-                    <div class="design xd">Xd</div>
-                  </div>
-                  <p>Adobe XD</p>
-                </li>
-                <li>
-                  <div class="tab-bg bg">
-                    <img src="../assets/image/sketch.png">
-                  </div>
-                  <p>Sketch</p>
-                </li>
-                <li>
-                  <div class="tab-bg bg">
-                    <img src="../assets/image/figma.png">
-                  </div>
-                  <p>Figma</p>
-                </li>
-              </ul>
-            </el-tab-pane>
-            <el-tab-pane label="兴趣爱好" name="second">
-              <div class="like">
-                <span style="left:100px;top:50px;padding: 6px 14px;font-size:16px">看新闻</span>
-                <span style="left:50px;top:180px;padding: 8px 20px;font-size:24px">逛知乎</span>
-                <span style="left:290px;top:150px;padding: 6px 20px;font-size:24px">篮球</span>
-                <span style="left:600px;top:200px;padding: 4px 10px;font-size:30px">你好</span>
-                <span style="left:230px;top:10px;padding: 3px 10px;font-size:18px">你好</span>
-                <span style="left:520px;top:100px;padding: 4px 22px;font-size:14px">你好</span>
-                <span style="left:250px;top:300px;padding: 7px 10px;font-size:14px">你好</span>
-                <span style="left:800px;top:500px;padding: 5px 15px;font-size:30px">你好</span>
-                <span style="left:700px;top:360px;padding: 4px 18px;font-size:18px">你好</span>
-                <span style="left:700px;top:50px;padding: 10px 15px;font-size:18px">你好</span>
-              </div>
-            </el-tab-pane>
-          </el-tabs>
-        </div>
-        <div class="thanks">
-          <el-divider>感谢您看到底</el-divider>
+                <p>Photoshop</p>
+              </li>
+              <li>
+                <div class="tab-bg bg">
+                  <div class="design ai">Ai</div>
+                </div>
+                <p>Illustrator</p>
+              </li>
+              <li>
+                <div class="tab-bg bg">
+                  <div class="design xd">Xd</div>
+                </div>
+                <p>Adobe XD</p>
+              </li>
+              <li>
+                <div class="tab-bg bg">
+                  <img src="../assets/image/sketch.png">
+                </div>
+                <p>Sketch</p>
+              </li>
+              <li>
+                <div class="tab-bg bg">
+                  <img src="../assets/image/figma.png">
+                </div>
+                <p>Figma</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </Layout>
 </template>
-
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import BaseInfo from '../components/BaseInfo.vue';
-
 @Component({
-  components:{BaseInfo}
+  components:{}
 })
 export default class Resume extends Vue {
-  url = ['../../img/icons/myHead.jpg'];
+  url = [require('../assets/image/myHead.jpg')];
   baseInfo=[
-    {name:"前端1年经验", iconName:"iconexperience"},
-    {name:"大专", iconName:"iconeducation"},
-    {name:"30岁", iconName:"iconbirthday"}
+    {name:"男", iconName:"iconsex"},
+    {name:"大专-计算机应用", iconName:"iconeducation"},
+    {name:"湖北恩施", iconName:"iconaddress"},
+    {name:"18671867439", iconName:"iconphone"},
+    {name:"1006676722@qq.com", iconName:"iconmailbox"}
   ];
-  baseInfo2 = [
-    {placement: "bottom-start", title:"Tel", content: "18671867438", iconName:"iconphone"},
-    {placement: "bottom", title:"Mail", content: "1006676722@qq.com", iconName:"iconmailbox"},
-    {placement: "bottom", title:"Address", content: "湖北恩施", iconName:"iconaddress"},
-    {placement: "bottom-end", title:"School", content: "湖北民族学院科技学院", iconName:"iconschool"}
-  ];
-  activeName=["1"];
-  skillLike="first";
   works=[
-    {title:"厦门好邦伲家政服务有限公司", name:"1",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
-    {title:"逛逛网(厦门)有限公司", name:"2",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+    {company:"厦门好邦伲家政服务有限公司",worktype:"前端工程师", time:"2017.04 - 2021.01",p1:"设计网页+公众号+小程序+App；",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+    {company:"逛逛网(厦门)有限公司", worktype:"前端工程师", time:"2017.04 - 2021.01",p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
   ];
-  currentName = "first";
+  items=[
+    {itemName:"公司CRM",itemTool:"Vue", itemTime:"2017.04 - 2021.01",itemInfo:'威仪服饰有限公司是一家专业从事集研发、设计、生产、销售为一体的专业化销售公司。公司将商务制服系列定为主打产品，以优质的产品，树立了诚信可靠的企业形象。此项目是承接网上销售和售后服务，产品更新展示和公司基本信息。',p1:"设计网页+公众号+小程序+App；",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+    {itemName:"好邦伲-公众号", itemTime:"2017.04 - 2021.01",itemInfo:'获得更多权限；一个是人脉管理，将对电影爱好者不管是投资者还是电影人联系在一起；一个是在线约谈，把一些新的电影拿出来给那些有兴趣的人去投资，让他们可以在线约谈。',p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+    {itemName:"好邦伲官网", itemTime:"2017.04 - 2021.01",itemInfo:'通过调研webpack打包优化方案，静态资源体积从多少减小到多少，优化了用户体验。方案发布后，页面打开率增加了多少，巴拉巴拉。通过引入前端监控方案，能更早定位与发现问题，引入后，让舆情反馈从每周多少降低到每周多少。通过引入node中间层，实现了前后端之间再一步分离。使得后端接口更微服务化、更专注于功能实现而非页面逻辑，需求迭代更加快速。引入之后，减少了多少后端开发成本，提高了多少研发效率。',p1:"第一点",  p2:"第二点" ,p3:"第三点",p4:"第四点"},
+  ];
 }
 </script>
 <style lang="scss" scoped>
 $boxRadius:60px;
 $lineHeight:96px;
 $infoRadius:30px;
-$infoPadding: 40px;
+$infoPadding: 30px;
 $fontSize24: 24px;
+$fontSize18: 18px;
 $fontSize30: 30px;
-$fontSize36: 36px;
 $itemBackGround:#2C2E37;
 $borderCircle: 100px;
 $border50: 50%;
 $spanHeight:46px;
-$dividerBack:#1F2026;
-$boxMarginTop:50px;
-
-.resume-box {
-  margin-top: 240px;
-  padding: 26px;
-  border-radius: $boxRadius;
-  background: #121417;
-  border: 2px solid rgb(73, 73, 73);
-}
-.resume {
-  background-color: $dividerBack;
-  padding: 0 40px 40px;
-  border-radius: $boxRadius;
-  > .status {
-    height: $lineHeight;
-    overflow: hidden;
-    display: flex;
-    > .time {
-      width: 200px;
-      font-size: $fontSize36;
-      font-weight: bold;
+$dividerBack:#2170DD;
+$boxMarginTop:40px;
+$boxMarginTop20:20px;
+$leftMarginTop:40px;
+.resume{
+  padding: 150px 0 100px 0;
+  display: flex;
+  color:#333;
+  font-size: 16px;
+  >.left{
+    min-width: 280px;
+    background: #1F2026;
+    padding-top:20px;
+    color: #fff;
+    >.head{
+      padding: 20px;
       text-align: center;
-    }
-    .time,
-    .signal {
-      line-height: $lineHeight;
-    }
-    > .bangs {
-      flex: 1;
-      background: #121417;
-      border-radius: 0 0 50px 50px;
-    }
-    > .signal {
-      width: 200px;
-      text-align: right;
-      i {
-        font-size: $fontSize30;
-      }
-    }
-  }
-  > .title {
-    margin-top: 90px;
-    h1 {
-      font-size: $fontSize36;
-    }
-    p {
-      width: 470px;
-      font-size: 20px;
-      margin-top: 10px;
-    }
-  }
-  .base-info{
-    margin-top: 130px;
-    background: $itemBackGround;
-    border-radius: $infoRadius;
-    padding: $infoPadding;
-    .head{
-      .headBorder {
-        border: 4px solid white;
-        border-radius: 50%;
+      .abtn{
+        color: #333;
+        font-size: 12px;
+        background: #FBDD40;
+        padding: 2px 5px;
+        border-radius: 4px;
       }
       >h1{
         display: inline-block;
-        margin-left: 20px;
-        font-size: 44px;
+        font-size: 36px;
+        padding: 20px 0 5px 0;
+      }
+      >p{
+        padding-top: 10px;
       }
     }
-    .info1{
-      margin-top: 30px;
+    >.base-info{
+      >ul>li>span{
+        padding-left: 18px;
+      }
+      >ul{
+        margin-top: $leftMarginTop;
+        padding: 20px;
+        >li{
+          padding: 4px 0;
+        }
+      }
+    }
+    >.my-like,>.base-info {
+      padding-top: 30px;
+      position: relative;
+      >h3{
+        color: #fff;
+        font-size: 20px;
+        background: $dividerBack;
+        padding: 0 20px;
+        height: 40px;
+        line-height: 40px;
+        position: absolute;
+        right: -10px;
+        left: 0;
+      }
+      >h3::after{
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 10px solid #1e3c64;
+        border-right: 10px solid transparent;
+        position: absolute;
+        right: 0;
+        top: 40px;
+      }
+    }
+    >.my-like{
       p{
-        margin-right: 60px;
+        margin-top: $leftMarginTop;
+        padding: 20px;
+      }
+    }
+  }
+  >.right{
+    flex-grow: 1;
+    background: #fff;
+    padding: 40px 50px 40px 80px;
+    >.my-skill,>.my-work-experience,>.my-item-experience,>.my-other-skill{
+      margin-top: 30px;
+      >.title{
+        font-size: 20px;
+        color: $dividerBack;
+        font-weight: bold;
+        position: relative;
+        i{
+          font-size: 24px;
+        }
         span{
           padding-left: 10px;
         }
       }
-      p,p i{
-        font-size: 28px;
-        font-weight: bold;
-      }
-    }
-  }
-  .job-wanted{
-    font-weight: bold;
-    margin-top: $boxMarginTop;
-    display: flex;
-    justify-content: space-between;
-    >.left{
-      padding: 10px 0;
-    }
-    >.left>.title{
-      font-size: $fontSize24;
-    }
-    >.left>.content{
-      margin-top: 10px;
-      span{
-        font-size: $fontSize30;
-        margin-right: 30px;
-      }
-    }
-    .right{
-      p{
-        width: 200px;
-        background: #FBDD40;
-        font-size: $fontSize36;
-        color: #121417;
-        text-align: center;
-        border-radius: $infoRadius;
-        padding: 28px 0;
-      }
-    }
-  }
-  .skill-introduce{
-    margin-top: $boxMarginTop;
-    background: #00369D;
-    padding: $infoPadding;
-    border-radius: $infoRadius;
-    p{
-      font-size: $fontSize24;
-      line-height: 36px;
-      color: #ddd;
-      span{
-        color: #FBDD40;
-        font-weight: bold;
-      }
-    }
-    p:not(:last-child){
-      margin-bottom: 20px;
-    }
-  }
-  .work-experience{
-    margin-top: $boxMarginTop;
-  }
-  .skill-and-like{
-    margin-top: $boxMarginTop;
-    background: $itemBackGround;
-    border-radius: $infoRadius;
-    padding: $infoPadding;
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 30px;
-      >li{
-        width: 20%;
-        text-align: center;
-        margin-top: 30px;
-      }
-      li > .tab-bg{
-        background: #fff;
-        border-radius: $border50;
-        height: 88px;
-        width: 88px;
-        display: inline-block;
-        line-height: 88px;
-        img{
-          height: 50px;
-        }
-        .text{
-          font-size: 24px;
-          color: #FF6C36;
-          font-weight: bold;
-        }
-        .design{
-          display: inline-block;
-          height: 44px;
-          width: 44px;
-          font-size: 24px;
-          font-weight: bold;
-          line-height: 44px;
-          border-radius: 6px;
-          border: 2px solid;
-          &.ps{
-            background: #061E26;
-            color: #D9F5FF;
-            border-color: #48C9FC;
-          }
-          &.ai{
-            background: #251402;
-            color: #F68123;
-            border-color: #F68123;
-          }
-          &.xd{
-            background: #470137;
-            color: #FFACFF;
-            border-color: #98154D;
-          }
-        }
-      }
-      li> .tab-bg.bg{
-        background: #444857;
-      }
-      li>p{
-        margin-top: 10px;
-      }
-    }
-    .like{
-      height: 400px;
-      position: relative;
-      margin-top: 30px;
-      span{
+      >.title::after{
+        content: '';
         position: absolute;
-        background: rgba($color: #fff, $alpha: 0.1);
-        border-radius: 4px;
+        left: 200px;
+        top: 14px;
+        right: 0;
+        height: 2px;
+        background: #679fee;
+      }
+      >.content{
+        margin-top: 10px;
+        padding-left: 34px;
       }
     }
-  }
-  .thanks{
-    margin-top: $boxMarginTop;
-    padding: 0 250px;
-    .el-divider__text{
-      background: $dividerBack;
-      font-size: 24px;
-      color: #444857;
+    >.my-skill{
+      >.content{
+        p:not(:first-of-type){
+          margin-top: 10px;
+        }
+        p{
+          font-weight:bold;
+          span{
+            color: #ED0909;
+            padding: 0 4px;
+          }
+        }
+      }
     }
-    .el-divider{
-      background-color: #444857;
+    >.my-work-experience{
+      >.content{
+        >.info{
+          >.company{
+            padding-top: 5px;
+            font-weight: bold;
+            >span{
+              padding-right: 100px;
+            }
+          }
+          >.introduce{
+            margin-top: 10px;
+            p:not(:first-of-type){
+              margin-top: 10px;
+            }
+            p{
+              span{
+                color: #ED0909;
+                padding: 0 4px;
+              }
+            }
+          }
+          >.duty{
+            color: #e08836;
+            margin-top: 10px;
+          }
+        }
+        >.info:not(:first-child){
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px dashed #ddd;
+        }
+      }
+    }
+    >.my-other-skill{
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        >li{
+          width: 20%;
+          text-align: center;
+        }
+        li > .tab-bg{
+          background: #fff;
+          border-radius: $border50;
+          height: 60px;
+          width: 60px;
+          display: inline-block;
+          line-height: 60px;
+          img{
+            height: 40px;
+          }
+          .text{
+            font-size: 24px;
+            color: #FF6C36;
+            font-weight: bold;
+          }
+          .design{
+            display: inline-block;
+            height: 32px;
+            width: 32px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 32px;
+            border-radius: 6px;
+            border: 2px solid;
+            &.ps{
+              background: #061E26;
+              color: #D9F5FF;
+              border-color: #48C9FC;
+            }
+            &.ai{
+              background: #251402;
+              color: #F68123;
+              border-color: #F68123;
+            }
+            &.xd{
+              background: #470137;
+              color: #FFACFF;
+              border-color: #98154D;
+            }
+          }
+        }
+        li> .tab-bg.bg{
+          background: #333;
+        }
+        li>p{
+          margin-top: 10px;
+        }
+      }
     }
   }
 }
 </style>
 <style lang="scss">
-.work-experience{
-  .el-collapse-item__header,.el-collapse-item__wrap{
-    background: #2C2E37;
+  .resume {
+    >.left >.head .el-image{
+        border: 2px solid #ffffff;
+      }
   }
-  .el-collapse,.el-collapse-item__header,.el-collapse-item__wrap{
-    border:none;
-  }
-  .el-collapse-item{
-    margin-top: 20px;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-  .el-collapse-item__header{
-    color: #fff;
-    font-size: 30px;
-    padding: 30px 40px;
-    height: auto;
-  }
-  .el-collapse-item__content{
-    color: #fff;
-    padding: 0 40px 40px;
-    font-size: 20px;
-  }
-}
-.skill-and-like{
-  .el-tabs__nav-wrap::after{
-    width: 0;
-  }
-  .el-tabs__nav{
-    background: #fff;
-    width: 420px;
-    height: 80px;
-    margin: 0 auto;
-    border-radius: 50px;
-    .el-tabs__item{
-      font-size: 24px;
-      width: 210px;
-      text-align: center;
-      z-index: 1;
-      line-height: 80px;
-    }
-  }
-  .el-tabs__active-bar{
-    height: 80px;
-    border-radius: 50px;
-  }
-  .is-active{
-    color: #fff !important;
-  }
-  .el-tabs__nav-wrap{
-    text-align: center;
-  }
-  .el-tabs__nav-scroll{
-    display: inline-block;
-  }
-}
 </style>

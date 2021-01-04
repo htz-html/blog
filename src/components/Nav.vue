@@ -1,7 +1,7 @@
 <template>
   <div id="Nav">
     <h1 class="logo">
-      <img src="../assets/image/logo@2x.png">
+      <router-link to='/'><img src="../assets/image/logo@2x.png"></router-link>
     </h1>
     <router-link to="/" class="item" active-class="selected" exact>
       <i class="iconfont iconhome"></i>
